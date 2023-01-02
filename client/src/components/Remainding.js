@@ -13,7 +13,7 @@ export default function Remainding() {
   console.log(totalExpenses)
 
   return (
-    <div className = {`alert ${alertType}`}>
+    <div className = {`alert ${alertType} type-card`}>
         <span>Remainding : ${budget - totalExpenses}</span>
     </div>
   )

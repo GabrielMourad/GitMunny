@@ -10,7 +10,7 @@ export default function ExpenseTotal() {
   }, 0)
 
   return (
-    <div className = "alert alert-primary">
+    <div className = "alert alert-primary type-card">
         <span>Spent so far: $ {totalExpenses}</span>
     </div>
   )

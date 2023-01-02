@@ -13,15 +13,15 @@ const App = () => {
             <div className = "container">
                 <h1 className = "mt-3 mb-4">GITMUNNY 😈😈😈😈 </h1>
                 <div className = "row mt-3">
-                    <div className = "col-sm">
+                    <div className = "col-sm ">
                         <BudgetCard/>
                     </div>
 
-                    <div className = "col-sm">
+                    <div className = "col-sm ">
                         <Remainding/>
                     </div>
                     
-                    <div className = "col-sm">
+                    <div className = "col-sm ">
                         <ExpenseTotal/>
                     </div>
                 </div>

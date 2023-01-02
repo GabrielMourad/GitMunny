@@ -8,3 +8,14 @@ body {
     background-color: grey;
     border: 1px solid;
 }
+
+.type-card{
+    height: 75px
+}
+
+.type-card:hover{
+    transform: scale(1.1);
+    box-shadow: 0 10px 40px 0 black;
+    z-index: 3;
+  
+}
