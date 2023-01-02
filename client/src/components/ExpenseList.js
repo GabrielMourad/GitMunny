@@ -1,0 +1,20 @@
+import React, { useContext } from 'react'
+import ExpenseItem from './ExpenseItem'
+import { BudgetAppContext } from '../context/BudgetAppContext'
+
+export default function ExpenseList() {
+    const {expenses} = useContext(BudgetAppContext);
+
+ 
+
+  return (
+    <div>
+        <ul className = 'list-group'>
+            {expenses.map((expense) => (
+
+                <ExpenseItem id = {expense.id} name = {expense.name} cost = {expense.cost}/>
+            ))}
+        </ul>
+    </div>
+  )
+}
