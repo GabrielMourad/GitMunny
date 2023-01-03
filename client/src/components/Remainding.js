@@ -10,7 +10,7 @@ export default function Remainding() {
   }, 0)
   
   const alertType = totalExpenses > budget ? 'alert-danger' : 'alert-success'
-  console.log(totalExpenses)
+
 
   return (
     <div className = {`alert ${alertType} type-card`}>
