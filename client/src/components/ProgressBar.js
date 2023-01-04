@@ -27,10 +27,9 @@ export default function ProgressBar() {
 
   const percent = (Math.floor((totalExpenses/budget) * 100) ) + "%"
  
-  document.documentElement.style.setProperty('--prog-percent', `${percent}`)
   useEffect(() => {
- 
-  },[])
+    document.documentElement.style.setProperty('--prog-percent', `${percent}`)
+  },[percent])
   
 
   

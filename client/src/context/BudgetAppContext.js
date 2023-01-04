@@ -32,12 +32,12 @@ function reducer(state, action){
 const initialState = {
     budget: 2000,
     expenses: [
-        {id: 12, name: "E-bike Jetson", cost: 40},
-        {id: 13, name: "iPhone 14", cost: 20},
-        {id: 14, name: "Macbook Air", cost: 4},
-        {id: 15, name: "Subway", cost: 40},
-        {id: 16, name: "El Pollo Loco", cost: 20},
-        {id: 17, name: "shopping3", cost: 4}
+        {id: 12, name: "E-bike Jetson", cost: 40, date: '12/6/2022, 10:34:22'},
+        {id: 13, name: "iPhone 14", cost: 20, date: '12/6/2022, 10:34:22'},
+        {id: 14, name: "Macbook Air", cost: 4, date: '12/6/2022, 10:34:22' },
+        {id: 15, name: "Subway", cost: 40, date: '12/6/2022, 10:34:22'},
+        {id: 16, name: "El Pollo Loco", cost: 20, date: '12/6/2022, 10:34:22'},
+        {id: 17, name: "shopping3", cost: 4, date: '12/6/2022, 10:34:22'}
     ]
 }
 
