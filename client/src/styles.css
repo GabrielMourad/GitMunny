@@ -20,7 +20,23 @@ body {
   
 }
 
-.progress-bar{
-    width: var(--prog-percent) 
+.progress{
+    height: 20px
 }
 
+.progress-bar{
+    width: var(--prog-percent);
+    
+}
+
+.modalTitle{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 10;
+    color: rgb(201, 49, 49);
+}
+
+.modal-budget{
+    color: white;
+    background-color: #2d2e30;
+}

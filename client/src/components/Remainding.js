@@ -13,8 +13,16 @@ export default function Remainding() {
 
 
   return (
-    <div className = {`alert ${alertType} type-card`}>
-        <span>Remainding : ${budget - totalExpenses}</span>
-    </div>
+    <>
+
+     <div className = {`alert ${alertType} type-card`}>
+          <span>Remainding : ${budget - totalExpenses}</span>
+     </div>
+
+     <div>
+      <a className = "modalTitle d-flex justify-content-center" href ="/">Deposit Money</a>
+     </div>
+    
+    </>
   )
 }

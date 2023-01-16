@@ -9,7 +9,7 @@ export default function ViewBudget(props) {
   return (
     <div >
         <span class = "">Budget: ${budget}</span>
-        <button align = "right" type = "button" onClick = {props.handleEdit} class = "btn btn-primary btn-sm">Set</button>
+        {/* <button align = "right" type = "button" onClick = {props.handleEdit} class = "btn btn-primary btn-sm">Set</button> */}
     </div>  
   )
 }

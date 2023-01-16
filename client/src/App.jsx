@@ -3,16 +3,18 @@ import AddExpenseForm from './components/AddExpenseForm';
 import BudgetCard from './components/BudgetCard';
 import ExpenseList from './components/ExpenseList';
 import ExpenseTotal from './components/ExpenseTotal';
+import BudgetModal from './components/modals/BudgetModal';
 import ProgressBar from './components/ProgressBar';
 import Remainding from './components/Remainding';
 import { BudgetContextProvider } from './context/BudgetAppContext';
 
-const App = () => {
+const App = (props) => {
     return(
         <BudgetContextProvider>
 
             <div className = "container">
                 <h1 className = "mt-3 mb-4">GITMUNNY 😈😈😈😈 </h1>
+             
                 <div className = "row mt-3">
                     <div className = "col-sm ">
                         <BudgetCard/>
@@ -27,8 +29,11 @@ const App = () => {
                     </div>
                   
                 </div>
+               
+                <div class = "mt-3">
+                     <ProgressBar/>
+                </div>
 
-                <ProgressBar/>
                 <h3 className = 'mt-3'>Add Expenses</h3>
                 <div className = 'row mt-3'>
                     <div className = 'col-sm'>
@@ -41,6 +46,7 @@ const App = () => {
                 <div className = 'mt-3'>
                     <div className = 'col-sm'>
                         <ExpenseList/>
+                       
                     </div>
 
                 </div>

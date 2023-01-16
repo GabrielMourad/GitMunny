@@ -20,11 +20,7 @@ export default function ExpenseItem(props) {
     {/* d-flex justify-content-between align-items-center */}
     <li className = "list-group-item">
       <div className = "d-flex justify-content-between align-items-center">
-
         {props.name}
-        
-        
-        
         <div>
             
             <span className = "badge bg-danger rounded-pill mr-3 ">

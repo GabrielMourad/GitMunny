@@ -10,8 +10,9 @@ export default function ExpenseList() {
   return (
     <div>
         <ul className = 'list-group'>
+          
             {expenses.map((expense) => (
-
+                
                 <ExpenseItem key = {expense.id} id = {expense.id} name = {expense.name} cost = {expense.cost} date = {expense.date}/>
             ))}
         </ul>

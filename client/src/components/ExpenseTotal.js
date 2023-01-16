@@ -10,8 +10,15 @@ export default function ExpenseTotal() {
   }, 0)
 
   return (
+    <>
     <div className = "alert alert-primary type-card">
         <span>Spent so far: $ {totalExpenses}</span>
     </div>
+
+    <div className = "d-flex justify-content-center">
+        Set Budget
+    </div>
+    
+    </>
   )
 }

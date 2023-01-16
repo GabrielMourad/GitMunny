@@ -19,23 +19,27 @@ export default function ProgressBar() {
 
 
   const {budget, expenses} = useContext(BudgetAppContext);
-  
-
+  let prog_color = "success"
   const totalExpenses = expenses.reduce((totalSum, currentItem) => {
     return (totalSum = totalSum + currentItem.cost)
   }, 0)
+  const percent = (Math.floor((totalExpenses/budget) * 100) );
 
-  const percent = (Math.floor((totalExpenses/budget) * 100) ) + "%"
- 
+  if(percent > 75)
+    prog_color = "warning"
+  if(percent > 90)
+    prog_color = "danger"
+  
+  console.log(prog_color)
   useEffect(() => {
-    document.documentElement.style.setProperty('--prog-percent', `${percent}`)
+    document.documentElement.style.setProperty('--prog-percent', `${percent}%`)
   },[percent])
   
 
   
   return (
     <div class="progress mt-2">
-        <div class="progress-bar bg-success" role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class= {`progress-bar bg-${prog_color}`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   )
 }
