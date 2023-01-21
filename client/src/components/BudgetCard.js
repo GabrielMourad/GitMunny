@@ -3,14 +3,14 @@ import '../styles.css'
 import { BudgetAppContext } from '../context/BudgetAppContext'
 import ViewBudget from './ViewBudget';
 import EditBudget from './EditBudget';
-import BudgetModal from './modals/BudgetModal';
+import TransactionModal from './modals/TransactionModal';
 
-export default function BudgetCard() {
+export default function BudgetCard(props) {
 
   const {dispatch} = useContext(BudgetAppContext);
   const [editBudget, setEditBudget] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
-
+  const transactionModal = document.getElementById("transaction-modal")
+  
 
   const handleEdit = () =>{
     
@@ -24,6 +24,7 @@ export default function BudgetCard() {
     })
 
     setEditBudget(false);
+    
   }
 
 
@@ -41,7 +42,7 @@ export default function BudgetCard() {
 
       </div>
       
-      <BudgetModal/>
+      <TransactionModal/>
     </>
     
   )

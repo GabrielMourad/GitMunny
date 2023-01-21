@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import { BudgetAppContext } from '../context/BudgetAppContext'
+import BudgetModal from './modals/BudgetModal';
 
 export default function ExpenseTotal() {
 
@@ -15,10 +16,9 @@ export default function ExpenseTotal() {
         <span>Spent so far: $ {totalExpenses}</span>
     </div>
 
-    <div className = "d-flex justify-content-center">
-        Set Budget
-    </div>
+
     
+    <BudgetModal/>
     </>
   )
 }

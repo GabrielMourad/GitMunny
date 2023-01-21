@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { BudgetAppContext } from '../context/BudgetAppContext'
+import DepositModal from './modals/DepositModal';
 
 export default function Remainding() {
 
@@ -16,12 +17,10 @@ export default function Remainding() {
     <>
 
      <div className = {`alert ${alertType} type-card`}>
-          <span>Remainding : ${budget - totalExpenses}</span>
+          <span>Remainding : ${(budget - totalExpenses).toFixed(2)}</span>
      </div>
 
-     <div>
-      <a className = "modalTitle d-flex justify-content-center" href ="/">Deposit Money</a>
-     </div>
+      <DepositModal/>
     
     </>
   )
