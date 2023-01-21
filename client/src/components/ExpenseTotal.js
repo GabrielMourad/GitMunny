@@ -1,5 +1,6 @@
 import React, {useContext} from 'react'
 import { BudgetAppContext } from '../context/BudgetAppContext'
+import BudgetModal from './modals/BudgetModal';
 
 export default function ExpenseTotal() {
 
@@ -10,8 +11,14 @@ export default function ExpenseTotal() {
   }, 0)
 
   return (
+    <>
     <div className = "alert alert-primary type-card">
         <span>Spent so far: $ {totalExpenses}</span>
     </div>
+
+
+    
+    <BudgetModal/>
+    </>
   )
 }

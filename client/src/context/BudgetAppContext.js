@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react"
+import { createContext, useReducer, useState } from "react"
 
 function reducer(state, action){
     switch(action.type){
@@ -30,14 +30,17 @@ function reducer(state, action){
 }
 
 const initialState = {
-    budget: 2000,
+    budget: 5000,
     expenses: [
-        {id: 12, name: "E-bike Jetson", cost: 40},
-        {id: 13, name: "iPhone 14", cost: 20},
-        {id: 14, name: "Macbook Air", cost: 4},
-        {id: 15, name: "Subway", cost: 40},
-        {id: 16, name: "El Pollo Loco", cost: 20},
-        {id: 17, name: "shopping3", cost: 4}
+        { name: 'E-bike Jetson', cost: 276.13, date: '12/6/2022, 10:34:22',  id: 1 },
+        { name: 'iPhone 14', cost: 1311.98, date: '12/6/2022, 10:34:22',  id: 2},
+        { name: 'Purchase 4', cost: 40, date: '12/6/2022, 10:34:22',  id: 3},
+        { name: 'Purchase 3', cost: 50, date: '12/6/2022, 10:34:22',  id: 4},
+        { name: 'Macbook Air', cost: 881.21, date: '12/6/2022, 10:34:22',  id: 5},
+        { name: 'Purchase 2', cost: 120, date: '12/6/2022, 10:34:22',  id: 6},
+        { name: 'Subway', cost: 11.13, date: '12/6/2022, 10:34:22',  id: 7},
+        { name: 'El Pollo Loco', cost: 7.66, date: '12/6/2022, 10:34:22',  id: 8},
+        { name : 'Purchase 1', cost: 50, date: '12/6/2022, 10:34:22',  id: 9}
     ]
 }
 
@@ -45,19 +48,20 @@ const totalExpenses = initialState.expenses.reduce((totalSum, currentItem) => {
     return (totalSum = totalSum + currentItem.cost)
   }, 0)
 
+  
+  export const BudgetAppContext = createContext();
+  
+  export const BudgetContextProvider = (props) => {
 
-
-export const BudgetAppContext = createContext();
-
-export const BudgetContextProvider = (props) => {
     const [state,dispatch] = useReducer(reducer, initialState)
-
+    
     return(
         <BudgetAppContext.Provider value = {{
             budget: state.budget,
             expenses: state.expenses.reverse(),
             dispatch,
-            totalExpenses
+            totalExpenses,
+           
 
         }}>
             {props.children}
