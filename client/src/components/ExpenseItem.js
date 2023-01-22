@@ -5,7 +5,7 @@ import { BudgetAppContext } from '../context/BudgetAppContext'
 export default function ExpenseItem(props) {
 
   const {dispatch} = useContext(BudgetAppContext);
-  const date = new Date();
+
 
   const handleDeleteExpense = () => {
 

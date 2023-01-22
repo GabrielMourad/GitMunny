@@ -2,14 +2,14 @@ import React, { useState, useContext } from 'react'
 import { BudgetAppContext } from '../context/BudgetAppContext';
 import {v4 as uuidv4} from 'uuid';
 import { ToastContainer, toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function AddExpenseForm() {
-  const {dispatch} = useContext(BudgetAppContext);
+  const {dispatch, setModal, modal} = useContext(BudgetAppContext);
 
   const [name, setName] = useState('');
   const [cost, setCost] = useState('');
-  
 
 
   function onSubmit(e){
@@ -29,6 +29,8 @@ export default function AddExpenseForm() {
     })
     
     toast.success("Yup")
+    document.getElementById("close-modal").click();
+    
     
   }
 

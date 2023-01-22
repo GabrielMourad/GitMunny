@@ -3,7 +3,7 @@ import { createContext, useReducer, useState } from "react"
 function reducer(state, action){
     switch(action.type){
         case 'ADD_EXPENSE':
-            console.log(...state.expenses, action.payload);
+            
             return {
                 ...state,
             
@@ -52,7 +52,6 @@ const totalExpenses = initialState.expenses.reduce((totalSum, currentItem) => {
   export const BudgetAppContext = createContext();
   
   export const BudgetContextProvider = (props) => {
-
     const [state,dispatch] = useReducer(reducer, initialState)
     
     return(
@@ -60,7 +59,7 @@ const totalExpenses = initialState.expenses.reduce((totalSum, currentItem) => {
             budget: state.budget,
             expenses: state.expenses.reverse(),
             dispatch,
-            totalExpenses,
+            totalExpenses
            
 
         }}>
