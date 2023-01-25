@@ -1,5 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { BudgetAppContext } from '../context/BudgetAppContext'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 export default function EditBudget() {
   const {budget, dispatch} = useContext(BudgetAppContext)
@@ -12,8 +15,9 @@ export default function EditBudget() {
           type: 'SET_BUDGET',
           payload: newBudget
         })
-    
-     
+        
+        document.getElementById("close-modal-budget").click();
+        toast.success("Budget Set")
   }
 
 

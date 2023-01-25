@@ -1,14 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { BudgetAppContext } from '../context/BudgetAppContext'
 import DepositModal from './modals/DepositModal';
 
 export default function Remainding() {
 
-  const {budget, expenses} = useContext(BudgetAppContext);
+  const {budget, expenses, deposit, totalExpenses} = useContext(BudgetAppContext);
 
-  const totalExpenses = expenses.reduce((totalSum, currentItem) => {
-    return (totalSum = totalSum + currentItem.cost)
-  }, 0)
+  
   
   const alertType = totalExpenses > budget ? 'alert-danger' : 'alert-success'
 
@@ -17,7 +15,7 @@ export default function Remainding() {
     <>
 
      <div className = {`alert ${alertType} type-card`}>
-          <span>Remainding : ${(budget - totalExpenses).toFixed(2)}</span>
+          <span>Remainding : ${totalExpenses}</span>
      </div>
 
       <DepositModal/>

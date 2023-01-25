@@ -1,7 +1,22 @@
-import React from 'react'
-
+import React, { useContext, useState } from 'react'
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import { BudgetAppContext } from '../../context/BudgetAppContext';
 //
 export default function DepositModal() {
+  
+  const {deposit, setDeposit, setTotalExpenses, totalExpenses} = useContext(BudgetAppContext);
+
+  const handleDeposit = (e) => {
+    e.preventDefault()
+    setTotalExpenses(() => deposit + totalExpenses)
+    setDeposit(0);
+    console.log("Total" ,totalExpenses)
+    toast.success("Deposit Set!")
+    document.getElementById("deposit-close").click();
+
+  }
+  
   return (
     <>
       <div>
@@ -16,11 +31,19 @@ export default function DepositModal() {
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              
+
+                <form id = "deposit-form" onSubmit = {handleDeposit}>
+                  <div className = 'col-sm'>
+                    <label htmlFor = 'name'>Deposit Amount</label>
+                    <input required = 'required' type = 'number' className = 'form-control' id='deposit'  onChange = {e => {setDeposit(parseFloat(e.target.value))}}>
+                    </input>
+                  </div>
+                </form>
+          
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+              <button id = "deposit-close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" form = "deposit-form">Understood</button>
             </div>
           </div>
         </div>

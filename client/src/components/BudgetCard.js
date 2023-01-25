@@ -1,24 +1,23 @@
 import React, {useContext, useState} from 'react'
 import '../styles.css'
-import $ from "jquery";
+
 import { BudgetAppContext } from '../context/BudgetAppContext'
 import ViewBudget from './ViewBudget';
-import EditBudget from './EditBudget';
 import TransactionModal from './modals/TransactionModal';
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function BudgetCard(props) {
+
+export default function BudgetCard() {
   
-
-
+  const {successModal, setSuccessModal} = useContext(BudgetAppContext);
 
   return (
     <>
+   
       
       <div className = 'alert alert-secondary p-3 d-flex  justify-content-between type-card'>
-      
-        
-        <ViewBudget  /> 
-
+    
+        <ViewBudget /> 
 
       </div>
 

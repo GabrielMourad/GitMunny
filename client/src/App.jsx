@@ -7,12 +7,15 @@ import BudgetModal from './components/modals/BudgetModal';
 import ProgressBar from './components/ProgressBar';
 import Remainding from './components/Remainding';
 import { BudgetContextProvider } from './context/BudgetAppContext';
+import 'react-toastify/dist/ReactToastify.css';
+import {  toast, ToastContainer } from 'react-toastify';
 
 const App = (props) => {
+    
     return(
         <BudgetContextProvider>
-
             <div className = "container">
+                <ToastContainer/>
                 <h1 className = "mt-3 mb-4">GITMUNNY 😈😈😈😈 </h1>
              
                 <div className = "row mt-3">
@@ -34,15 +37,8 @@ const App = (props) => {
                      <ProgressBar/>
                 </div>
 
-                <h3 className = 'mt-3'>Add Expenses</h3>
-                <div className = 'row mt-3'>
-                    <div className = 'col-sm'>
-                        <AddExpenseForm/>
-                        
-                    </div>
-
-                </div>
-                <h3 className = 'mt-4'>Expenses</h3>
+            
+                <h3 className = 'mt-5'>Expenses</h3>
                 <div className = 'mt-3'>
                     <div className = 'col-sm'>
                         <ExpenseList/>

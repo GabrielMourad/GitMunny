@@ -4,16 +4,16 @@ import BudgetModal from './modals/BudgetModal';
 
 export default function ExpenseTotal() {
 
-  const {expenses} = useContext(BudgetAppContext);
+  const {expenses, totalExpenses, deposit} = useContext(BudgetAppContext);
   
-  const totalExpenses = expenses.reduce((totalSum, currentItem) => {
-    return (totalSum = totalSum + currentItem.cost)
-  }, 0)
+  
+  
+  
 
   return (
     <>
     <div className = "alert alert-primary type-card">
-        <span>Spent so far: $ {totalExpenses}</span>
+        <span>Spent so far: $ {totalExpenses.toFixed(2)}</span>
     </div>
 
 

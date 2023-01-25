@@ -1,18 +1,27 @@
 import React, { useContext } from 'react'
 import {TiDelete} from 'react-icons/ti'
 import { BudgetAppContext } from '../context/BudgetAppContext'
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 export default function ExpenseItem(props) {
 
-  const {dispatch} = useContext(BudgetAppContext);
+  const {expenses, dispatch, setTotalExpense} = useContext(BudgetAppContext);
 
 
   const handleDeleteExpense = () => {
-
+    
+    toast.error("Expense Deleted")
+    
     dispatch({
       type: 'DELETE_EXPENSE',
       payload: props.id,
     })
+
+    setTotalExpense(expenses.reduce((totalSum, currentItem) => {
+      return (totalSum = totalSum + currentItem.cost)
+   }, 0))
+
   }
 
   return (

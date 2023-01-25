@@ -18,11 +18,11 @@ export default function ProgressBar() {
     //     }
 
 
-  const {budget, expenses} = useContext(BudgetAppContext);
+  const {budget, expenses, totalExpenses} = useContext(BudgetAppContext);
   let prog_color = "success"
-  const totalExpenses = expenses.reduce((totalSum, currentItem) => {
-    return (totalSum = totalSum + currentItem.cost)
-  }, 0)
+
+
+  
   const percent = (Math.floor((totalExpenses/budget) * 100) );
 
   if(percent > 75)
@@ -30,7 +30,6 @@ export default function ProgressBar() {
   if(percent > 90)
     prog_color = "danger"
   
-  console.log(prog_color)
   useEffect(() => {
     document.documentElement.style.setProperty('--prog-percent', `${percent}%`)
   },[percent])

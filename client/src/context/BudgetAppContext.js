@@ -41,25 +41,38 @@ const initialState = {
         { name: 'Subway', cost: 11.13, date: '12/6/2022, 10:34:22',  id: 7},
         { name: 'El Pollo Loco', cost: 7.66, date: '12/6/2022, 10:34:22',  id: 8},
         { name : 'Purchase 1', cost: 50, date: '12/6/2022, 10:34:22',  id: 9}
-    ]
+    ],
+    
 }
 
-const totalExpenses = initialState.expenses.reduce((totalSum, currentItem) => {
-    return (totalSum = totalSum + currentItem.cost)
-  }, 0)
 
-  
-  export const BudgetAppContext = createContext();
-  
-  export const BudgetContextProvider = (props) => {
+
+
+export const BudgetAppContext = createContext();
+
+export const BudgetContextProvider = (props) => {
     const [state,dispatch] = useReducer(reducer, initialState)
+    const [deposit, setDeposit] = useState(0);
+    const [remainding, setRemainding] = useState(0);
+    const totalE = initialState.expenses.reduce((totalSum, currentItem) => {
+        return (totalSum = totalSum + currentItem.cost)
+     }, 0)
+    
+    const [totalExpenses, setTotalExpenses] = useState(totalE)
+  
+
+    
     
     return(
         <BudgetAppContext.Provider value = {{
             budget: state.budget,
             expenses: state.expenses.reverse(),
             dispatch,
-            totalExpenses
+            deposit,
+            setDeposit,
+            totalExpenses,
+            setTotalExpenses
+           
            
 
         }}>
