@@ -4,8 +4,7 @@ import BudgetModal from './modals/BudgetModal';
 
 export default function ExpenseTotal() {
 
-  const {expenses, totalExpenses, deposit} = useContext(BudgetAppContext);
-  
+  const {expenses, deposit, totalExpenses} = useContext(BudgetAppContext);
   
   
   

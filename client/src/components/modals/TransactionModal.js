@@ -4,7 +4,7 @@ import AddExpenseForm from '../AddExpenseForm'
 
 export default function BudgetModal(props) {
   const {modal} = useContext(BudgetAppContext)
-
+  
   
 
  

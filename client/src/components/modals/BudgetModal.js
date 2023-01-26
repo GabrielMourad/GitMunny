@@ -3,7 +3,6 @@ import EditBudget from '../EditBudget'
 
 export default function BudgetModal(props) {
   
-  
     
   return (
     <>

@@ -7,7 +7,7 @@ import {  toast } from 'react-toastify';
 
 
 export default function AddExpenseForm() {
-  const {dispatch} = useContext(BudgetAppContext);
+  const {dispatch, budget, remainding, setRemainding} = useContext(BudgetAppContext);
 
   const [name, setName] = useState('');
   const [cost, setCost] = useState('');
@@ -22,13 +22,16 @@ export default function AddExpenseForm() {
       id: uuidv4(),
       name: name,
       cost: parseFloat(cost),
-      date: new Date().toLocaleString()
+      date: new Date().toLocaleString(),
+      type: 'p'
     }
    
     dispatch({
       type: 'ADD_EXPENSE',
       payload: expense
     })
+
+    setRemainding(remainding - parseFloat(cost))
     
     toast.success("Expense Set Successfully")
     document.getElementById("close-modal").click();

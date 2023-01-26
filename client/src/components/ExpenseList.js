@@ -13,7 +13,7 @@ export default function ExpenseList() {
           
             {expenses.map((expense) => (
                 
-                <ExpenseItem key = {expense.id} id = {expense.id} name = {expense.name} cost = {expense.cost} date = {expense.date}/>
+                <ExpenseItem key = {expense.id} id = {expense.id} name = {expense.name} cost = {expense.cost} date = {expense.date} type = {expense.type}/>
             ))}
         </ul>
     </div>

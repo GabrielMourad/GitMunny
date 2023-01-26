@@ -6,23 +6,43 @@ import { toast } from 'react-toastify';
 
 export default function ExpenseItem(props) {
 
-  const {expenses, dispatch, setTotalExpense} = useContext(BudgetAppContext);
+  const {remainding, setRemainding, expenses, dispatch, setTotalExpenses} = useContext(BudgetAppContext);
 
+  let badgeColor = 'danger'
+  let sign = "-"
+  
 
   const handleDeleteExpense = () => {
     
-    toast.error("Expense Deleted")
+    toast.dark("Expense Deleted")
     
     dispatch({
       type: 'DELETE_EXPENSE',
       payload: props.id,
     })
 
-    setTotalExpense(expenses.reduce((totalSum, currentItem) => {
+    if(props.type === "p"){
+      setRemainding(remainding + props.cost)
+
+    }else{
+      setRemainding(remainding - props.cost)
+    }
+    
+
+    setTotalExpenses(expenses.reduce((totalSum, currentItem) => {
       return (totalSum = totalSum + currentItem.cost)
    }, 0))
 
+   
   }
+
+  if(props.type === "d"){
+    badgeColor = "success"
+    sign = "+"
+  }
+
+    
+
 
   return (
     <>
@@ -32,8 +52,8 @@ export default function ExpenseItem(props) {
         {props.name}
         <div>
             
-            <span className = "badge bg-danger rounded-pill mr-3 ">
-                - ${props.cost}
+            <span className = {`badge bg-${badgeColor} rounded-pill mr-3`} >
+                {sign} ${props.cost}
             </span>
             <TiDelete size = '1.3em' onClick ={handleDeleteExpense}></TiDelete>
             

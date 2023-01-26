@@ -2,16 +2,30 @@ import React, { useContext, useState } from 'react'
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import { BudgetAppContext } from '../../context/BudgetAppContext';
+import {v4 as uuidv4} from 'uuid';
 //
 export default function DepositModal() {
   
-  const {deposit, setDeposit, setTotalExpenses, totalExpenses} = useContext(BudgetAppContext);
+  const {setRemainding, remainding, deposit, setDeposit, dispatch} = useContext(BudgetAppContext);
 
   const handleDeposit = (e) => {
     e.preventDefault()
-    setTotalExpenses(() => deposit + totalExpenses)
+    setRemainding(deposit + remainding)
+
+    const expense = {
+      id: uuidv4(),
+      name: "DEPOSIT",
+      cost: parseFloat(deposit),
+      date: new Date().toLocaleString(),
+      type: 'd'
+    }
+   
+    dispatch({
+      type: 'ADD_EXPENSE',
+      payload: expense
+    })
+
     setDeposit(0);
-    console.log("Total" ,totalExpenses)
     toast.success("Deposit Set!")
     document.getElementById("deposit-close").click();
 
