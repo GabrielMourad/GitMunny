@@ -11,7 +11,7 @@ export default function DepositModal() {
   const handleDeposit = (e) => {
     e.preventDefault()
     setRemainding(deposit + remainding)
-
+    setDeposit(deposit)
     const expense = {
       id: uuidv4(),
       name: "DEPOSIT",
@@ -25,7 +25,7 @@ export default function DepositModal() {
       payload: expense
     })
 
-    setDeposit(0);
+    setDeposit(" ");
     toast.success("Deposit Set!")
     document.getElementById("deposit-close").click();
 
@@ -49,7 +49,7 @@ export default function DepositModal() {
                 <form id = "deposit-form" onSubmit = {handleDeposit}>
                   <div className = 'col-sm'>
                     <label htmlFor = 'name'>Deposit Amount</label>
-                    <input required = 'required' type = 'number' className = 'form-control' id='deposit'  onChange = {e => {setDeposit(parseFloat(e.target.value))}}>
+                    <input required = 'required' type = 'number' className = 'form-control' id='deposit' value = {deposit} onChange = {e => {setDeposit(parseFloat(e.target.value))}}>
                     </input>
                   </div>
                 </form>

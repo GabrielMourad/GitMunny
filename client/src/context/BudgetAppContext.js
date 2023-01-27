@@ -54,7 +54,7 @@ export const BudgetAppContext = createContext();
 
 export const BudgetContextProvider = (props) => {
     const [state,dispatch] = useReducer(reducer, initialState)
-    const [deposit, setDeposit] = useState(0);
+    const [deposit, setDeposit] = useState(" ");
     const [remainding, setRemainding] = useState(initialState.budget - initialState.totalExpense);
     
     const [totalExpenses, setTotalExpenses] = useState(initialState.expenses.reduce((totalSum, currentItem) => {
