@@ -6,11 +6,11 @@ import {v4 as uuidv4} from 'uuid';
 //
 export default function DepositModal() {
   
-  const {setRemainding, remainding, deposit, setDeposit, dispatch} = useContext(BudgetAppContext);
+  const {dispatch} = useContext(BudgetAppContext);
+  const [deposit, setDeposit] = useState("");
 
   const handleDeposit = (e) => {
     e.preventDefault()
-    setRemainding(deposit + remainding)
     setDeposit(deposit)
     const expense = {
       id: uuidv4(),
@@ -25,7 +25,7 @@ export default function DepositModal() {
       payload: expense
     })
 
-    setDeposit(" ");
+ 
     toast.success("Deposit Set!")
     document.getElementById("deposit-close").click();
 
@@ -34,7 +34,7 @@ export default function DepositModal() {
   return (
     <>
       <div>
-        <a data-bs-toggle="modal" data-bs-target="#deposit-modal" className = "modalTitle d-flex justify-content-center" href = "#" 
+        <a data-bs-toggle="modal" data-bs-target="#deposit-modal" className = "modalTitle d-flex justify-content-center" href = "/#" 
         >Deposit Money</a>
       </div>
       <div class="modal fade" id="deposit-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

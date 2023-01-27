@@ -1,4 +1,4 @@
-import { createContext, useReducer, useState } from "react"
+import { createContext, useReducer} from "react"
 
 function reducer(state, action){
     switch(action.type){
@@ -7,7 +7,8 @@ function reducer(state, action){
             return {
                 ...state,
                 expenses: [action.payload, ...state.expenses],
-                remain: state.remain - action.payload.cost
+                remainding: state.remainding - action.payload.cost,
+                totalExpenses : state.totalExpenses + action.payload.cost
             }
         
         case 'DELETE_EXPENSE_P':
@@ -17,7 +18,8 @@ function reducer(state, action){
                     (expense) => expense.id !== action.payload.id
                 ),
 
-                remain: state.remain + action.payload.cost
+                remainding: state.remainding + action.payload.cost,
+                totalExpenses : state.totalExpenses - action.payload.cost   
 
             };
         
@@ -27,7 +29,9 @@ function reducer(state, action){
                 expenses: state.expenses.filter(
                     (expense) => expense.id !== action.payload.id
                 ),
-                remain : state.remain - action.payload.cost
+                remain : state.remain - action.payload.cost,
+                 
+                
             };
             
         case 'SET_BUDGET':
@@ -40,7 +44,7 @@ function reducer(state, action){
             return{
                 ...state,
                 expenses: [action.payload, ...state.expenses],
-                remain: state.remain + action.payload.cost
+                remainding: state.remainding + action.payload.cost
                 
             }
 
@@ -69,8 +73,8 @@ const initialState = {
     
 }
 
-initialState.totalExpense = initialState.expenses.reduce((acc, expense) => acc + expense.cost, 0);
-initialState.remain = initialState.budget - initialState.totalExpense;
+initialState.totalExpenses = initialState.expenses.reduce((acc, expense) => acc + expense.cost, 0);
+initialState.remainding = initialState.budget - initialState.totalExpenses;
 
 
 
@@ -78,30 +82,15 @@ export const BudgetAppContext = createContext();
 
 export const BudgetContextProvider = (props) => {
     const [state,dispatch] = useReducer(reducer, initialState)
-    const [deposit, setDeposit] = useState(" ");
-    
-    const [remainding, setRemainding] = useState(initialState.budget - initialState.totalExpense);
-    
-    const [totalExpenses, setTotalExpenses] = useState(initialState.expenses.reduce((totalSum, currentItem) => {
-        return (totalSum = totalSum + currentItem.cost)
-     }, 0))
-  
 
-    
     
     return(
         <BudgetAppContext.Provider value = {{
             budget: state.budget,
             expenses: state.expenses,
-            totalExpense: state.totalExpense,
-            remain: state.remain,
-            dispatch,
-            deposit,
-            setDeposit,
-            totalExpenses,
-            setTotalExpenses,
-            remainding,
-            setRemainding
+            totalExpenses: state.totalExpenses,
+            remainding: state.remainding,
+            dispatch
             
            
            

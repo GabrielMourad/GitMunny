@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 export default function ExpenseItem(props) {
 
-  const {expenses, dispatch, setTotalExpenses} = useContext(BudgetAppContext);
+  const {dispatch} = useContext(BudgetAppContext);
 
   let badgeColor = 'danger'
   let sign = "-"
@@ -35,9 +35,7 @@ export default function ExpenseItem(props) {
     }
     
 
-    setTotalExpenses(expenses.reduce((totalSum, currentItem) => {
-      return (totalSum = totalSum + currentItem.cost)
-   }, 0))
+
 
    
   }

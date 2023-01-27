@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { BudgetAppContext } from '../context/BudgetAppContext'
 import DepositModal from './modals/DepositModal';
 
 export default function Remainding() {
 
-  const {budget, remain, totalExpenses} = useContext(BudgetAppContext);
+  const {budget,remainding, totalExpenses} = useContext(BudgetAppContext);
 
   
   
@@ -15,7 +15,7 @@ export default function Remainding() {
     <>
 
      <div className = {`alert ${alertType} type-card`}>
-          <span>Remainding : ${remain.toFixed(2)}</span>
+          <span>Remainding : ${remainding.toFixed(2)}</span>
      </div>
 
       <DepositModal/>
