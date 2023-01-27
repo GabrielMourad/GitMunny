@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 export default function ExpenseItem(props) {
 
-  const {remainding, setRemainding, expenses, dispatch, setTotalExpenses} = useContext(BudgetAppContext);
+  const {expenses, dispatch, setTotalExpenses} = useContext(BudgetAppContext);
 
   let badgeColor = 'danger'
   let sign = "-"
@@ -15,17 +15,23 @@ export default function ExpenseItem(props) {
   const handleDeleteExpense = () => {
     
     toast.dark("Expense Deleted")
+    const currentPayload = {
+      id: props.id,
+      cost: props.cost
+    }
     
-    dispatch({
-      type: 'DELETE_EXPENSE',
-      payload: props.id,
-    })
-
     if(props.type === "p"){
-      setRemainding(remainding + props.cost)
-
+      dispatch({
+        type: 'DELETE_EXPENSE_P',
+        payload: currentPayload
+      })
+      
     }else{
-      setRemainding(remainding - props.cost)
+      
+      dispatch({
+        type: 'DELETE_EXPENSE_D',
+        payload: currentPayload
+      })
     }
     
 

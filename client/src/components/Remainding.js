@@ -4,7 +4,7 @@ import DepositModal from './modals/DepositModal';
 
 export default function Remainding() {
 
-  const {budget, remainding, totalExpenses} = useContext(BudgetAppContext);
+  const {budget, remain, totalExpenses} = useContext(BudgetAppContext);
 
   
   
@@ -15,7 +15,7 @@ export default function Remainding() {
     <>
 
      <div className = {`alert ${alertType} type-card`}>
-          <span>Remainding : ${remainding.toFixed(2)}</span>
+          <span>Remainding : ${remain.toFixed(2)}</span>
      </div>
 
       <DepositModal/>

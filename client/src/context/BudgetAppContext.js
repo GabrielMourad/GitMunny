@@ -6,21 +6,42 @@ function reducer(state, action){
             
             return {
                 ...state,
-                expenses: [action.payload, ...state.expenses]
+                expenses: [action.payload, ...state.expenses],
+                remain: state.remain - action.payload.cost
             }
         
-        case 'DELETE_EXPENSE':
+        case 'DELETE_EXPENSE_P':
             return{
                 ...state,
                 expenses: state.expenses.filter(
-                    (expense) => expense.id !== action.payload
+                    (expense) => expense.id !== action.payload.id
                 ),
+
+                remain: state.remain + action.payload.cost
+
             };
         
+        case 'DELETE_EXPENSE_D':
+            return{
+                ...state,
+                expenses: state.expenses.filter(
+                    (expense) => expense.id !== action.payload.id
+                ),
+                remain : state.remain - action.payload.cost
+            };
+            
         case 'SET_BUDGET':
             return{
                 ...state,
                 budget: action.payload
+            }
+        
+        case 'SET_DEPOSIT':
+            return{
+                ...state,
+                expenses: [action.payload, ...state.expenses],
+                remain: state.remain + action.payload.cost
+                
             }
 
         default:
@@ -41,13 +62,16 @@ const initialState = {
         { name: 'El Pollo Loco', cost: 7.66, date: '12/6/2022, 10:34:22',  id: 8, type: 'p'},
         { name : 'Purchase 1', cost: 50, date: '12/6/2022, 10:34:22',  id: 9, type: 'p'}
     ],
+
+    
     
     
     
 }
 
-
 initialState.totalExpense = initialState.expenses.reduce((acc, expense) => acc + expense.cost, 0);
+initialState.remain = initialState.budget - initialState.totalExpense;
+
 
 
 export const BudgetAppContext = createContext();
@@ -70,6 +94,7 @@ export const BudgetContextProvider = (props) => {
             budget: state.budget,
             expenses: state.expenses,
             totalExpense: state.totalExpense,
+            remain: state.remain,
             dispatch,
             deposit,
             setDeposit,

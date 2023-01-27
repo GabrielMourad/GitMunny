@@ -21,7 +21,7 @@ export default function DepositModal() {
     }
    
     dispatch({
-      type: 'ADD_EXPENSE',
+      type: 'SET_DEPOSIT',
       payload: expense
     })
 
