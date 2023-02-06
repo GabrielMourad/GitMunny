@@ -7,10 +7,10 @@ function reducer(state, action){
             return {
                 ...state,
                 expenses: [action.payload, ...state.expenses],
-                remainding: state.remainding - action.payload.cost,
-                totalExpenses : state.totalExpenses + action.payload.cost
+                remainding: Math.round(100* (state.remainding - action.payload.cost))/100,
+                totalExpenses : Math.round(100* (state.totalExpenses + action.payload.cost))/100
             }
-        
+        //Math.round(100*X)/100
         case 'DELETE_EXPENSE_P':
             return{
                 ...state,
@@ -18,8 +18,8 @@ function reducer(state, action){
                     (expense) => expense.id !== action.payload.id
                 ),
 
-                remainding: state.remainding + action.payload.cost,
-                totalExpenses : state.totalExpenses - action.payload.cost   
+                remainding: Math.round(100* (state.remainding + action.payload.cost))/100,
+                totalExpenses : Math.round(100*(state.totalExpenses - action.payload.cost ))/100  
 
             };
         
@@ -29,9 +29,9 @@ function reducer(state, action){
                 expenses: state.expenses.filter(
                     (expense) => expense.id !== action.payload.id
                 ),
-                remain : state.remain - action.payload.cost,
+                remain : Math.round(100*(state.remain - action.payload.cost))/100,
                  
-                
+            
             };
             
         case 'SET_BUDGET':
@@ -44,7 +44,7 @@ function reducer(state, action){
             return{
                 ...state,
                 expenses: [action.payload, ...state.expenses],
-                remainding: state.remainding + action.payload.cost
+                remainding: Math.round(100*(state.remainding + action.payload.cost))/100
                 
             }
 

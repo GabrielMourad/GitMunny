@@ -7,12 +7,11 @@ export default function ExpenseTotal() {
   const {totalExpenses} = useContext(BudgetAppContext);
   console.log("Total expense: ", totalExpenses)
   
-  
 
   return (
     <>
     <div className = "alert alert-primary type-card">
-        <span>Spent so far: $ {totalExpenses.toFixed(2)}</span>
+        <span>Spent so far: $ {totalExpenses}</span>
     </div>
 
 

@@ -15,7 +15,7 @@ export default function Remainding() {
     <>
 
      <div className = {`alert ${alertType} type-card`}>
-          <span>Remainding : ${remainding.toFixed(2)}</span>
+          <span>Remainding : ${remainding}</span>
      </div>
 
       <DepositModal/>

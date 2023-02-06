@@ -9,7 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function BudgetCard() {
   
-  const {successModal, setSuccessModal} = useContext(BudgetAppContext);
 
   return (
     <>
