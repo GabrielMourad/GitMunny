@@ -1,16 +1,18 @@
 import React from 'react'
-import BudgetCard from './components/BudgetCard';
-import ExpenseList from './components/ExpenseList';
-import ExpenseTotal from './components/ExpenseTotal';
-import ProgressBar from './components/ProgressBar';
-import Remainding from './components/Remainding';
+import BudgetCard from './BudgetCard';
+import Remainding from './Remainding';
+import ExpenseTotal from './ExpenseTotal';
+import ProgressBar from './ProgressBar';
+import ExpenseList from './ExpenseList';
 import 'react-toastify/dist/ReactToastify.css';
+import {  toast, ToastContainer } from 'react-toastify';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function Dashboard() {
   return (
     <div className = "container">
     <ToastContainer/>
-        <h1 className = "mt-3 mb-4">GITMUNNY 😈😈😈<span onClick = {devil}>😈</span></h1>
+        <h1 className = "mt-3 mb-4">GITMUNNY 😈😈😈</h1>
  
         <div className = "row mt-3">
             <div className = "col-sm ">

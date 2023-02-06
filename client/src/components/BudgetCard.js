@@ -1,7 +1,5 @@
 import React, {useContext, useState} from 'react'
 import '../styles.css'
-
-import { BudgetAppContext } from '../context/BudgetAppContext'
 import ViewBudget from './ViewBudget';
 import TransactionModal from './modals/TransactionModal';
 import 'react-toastify/dist/ReactToastify.css';
