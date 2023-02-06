@@ -39,8 +39,8 @@ export default function ProgressBar() {
 
   
   return (
-    <div class="progress mt-2">
-        <div class= {`progress-bar bg-${prog_color}`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+    <div class="progress progress-total mt-2">
+        <div class= {`progress-bar bar-total bg-${prog_color}`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
   )
 }

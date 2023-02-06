@@ -4,12 +4,12 @@ import { BudgetAppContext } from '../context/BudgetAppContext'
 
 export default function ExpenseList() {
     const {expenses} = useContext(BudgetAppContext);
-
- 
+    
+    
 
   return (
-    <div>
-        <ul className = 'list-group'>
+    <div className='expense-list'>
+        <ul className = 'list-group mb-3'>
           
             {expenses.map((expense) => (
                 

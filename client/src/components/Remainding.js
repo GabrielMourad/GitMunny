@@ -9,7 +9,6 @@ export default function Remainding() {
   
   
   const alertType = totalExpenses > budget ? 'alert-danger' : 'alert-success'
-  
 
   return (
     <>

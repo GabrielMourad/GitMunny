@@ -1,9 +1,7 @@
-import React, { useContext } from 'react'
-import { BudgetAppContext } from '../../context/BudgetAppContext'
+import React from 'react'
 import AddExpenseForm from '../AddExpenseForm'
 
 export default function BudgetModal(props) {
-  const {modal} = useContext(BudgetAppContext)
   
   
 

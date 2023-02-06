@@ -29,7 +29,7 @@ function reducer(state, action){
                 expenses: state.expenses.filter(
                     (expense) => expense.id !== action.payload.id
                 ),
-                remain : Math.round(100*(state.remain - action.payload.cost))/100,
+                remainding : Math.round(100*(state.remainding - action.payload.cost))/100,
                  
             
             };

@@ -21,9 +21,14 @@ body {
   
 }
 
+.expense-list{
+    height: 500px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
 
 .progress{
-    height: 20px
+    height: 20px;
 }
 
 .progress-bar{

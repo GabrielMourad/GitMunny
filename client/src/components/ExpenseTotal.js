@@ -5,7 +5,6 @@ import BudgetModal from './modals/BudgetModal';
 export default function ExpenseTotal() {
 
   const {totalExpenses} = useContext(BudgetAppContext);
-  console.log("Total expense: ", totalExpenses)
   
 
   return (
