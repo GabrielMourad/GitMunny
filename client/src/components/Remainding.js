@@ -4,7 +4,7 @@ import DepositModal from './modals/DepositModal';
 
 export default function Remainding() {
 
-  const {budget,remainding, totalExpenses} = useContext(BudgetAppContext);
+  const {budget, remainding, totalExpenses} = useContext(BudgetAppContext);
 
   
   

@@ -82,8 +82,8 @@ export const BudgetAppContext = createContext();
 
 export const BudgetContextProvider = (props) => {
     const [state,dispatch] = useReducer(reducer, initialState)
-
     
+     
     return(
         <BudgetAppContext.Provider value = {{
             budget: state.budget,

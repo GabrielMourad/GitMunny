@@ -8,7 +8,7 @@ export default function DepositModal() {
   
   const {dispatch} = useContext(BudgetAppContext);
   const [deposit, setDeposit] = useState("");
-
+  const saveWord = ['Affirmative', 'Understood', 'Confirmed', 'Absolutely', 'You Got It Boss', 'Sergio Branch', 'GitMuney']
   const handleDeposit = (e) => {
     e.preventDefault()
     setDeposit(deposit)
@@ -57,7 +57,7 @@ export default function DepositModal() {
             </div>
             <div class="modal-footer">
               <button id = "deposit-close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" form = "deposit-form">Understood</button>
+              <button type="submit" class="btn btn-primary" form = "deposit-form">{saveWord[Math.floor(Math.random() * (saveWord.length))]}</button>
             </div>
           </div>
         </div>

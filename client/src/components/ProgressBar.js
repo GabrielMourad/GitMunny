@@ -23,13 +23,15 @@ export default function ProgressBar() {
 
 
   
-  const percent = (Math.floor((totalExpenses/budget) * 100) );
+  const percent = (Math.floor((totalExpenses/budget) * 100));
 
   if(percent > 75)
     prog_color = "warning"
+
   if(percent > 90)
     prog_color = "danger"
   
+
   useEffect(() => {
     document.documentElement.style.setProperty('--prog-percent', `${percent}%`)
   },[percent])
