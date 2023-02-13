@@ -6,13 +6,14 @@ import ProgressBar from './ProgressBar';
 import ExpenseList from './ExpenseList';
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer } from 'react-toastify';
+import Categories from './Categories';
 
 function Dashboard() {
   return (
     <div className = "container">
     <ToastContainer/>
         <h1 className = "mt-3 mb-4">GITMUNNY 😈😈😈</h1>
- 
+
         <div className = "row mt-3">
             <div className = "col-sm ">
                 <BudgetCard/>
@@ -32,8 +33,10 @@ function Dashboard() {
             <ProgressBar/>
         </div>
 
-        <div>
-            Categories
+        <h3 className = 'mt-4'>Categories</h3>
+
+        <div class = " ">
+            <Categories/>
         </div>
 
         <h3 className = 'mt-5'>Expenses</h3>

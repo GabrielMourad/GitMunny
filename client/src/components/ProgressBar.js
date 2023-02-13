@@ -18,7 +18,7 @@ export default function ProgressBar() {
     //     }
 
 
-  const {budget, expenses, totalExpenses} = useContext(BudgetAppContext);
+  const {budget, totalExpenses} = useContext(BudgetAppContext);
   let prog_color = "success"
 
 

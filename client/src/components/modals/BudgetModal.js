@@ -7,7 +7,7 @@ export default function BudgetModal(props) {
   return (
     <>
       <div>
-        <a data-bs-toggle="modal" data-bs-target="#budget-modal" className = "modalTitle d-flex justify-content-center" href = "#" 
+        <a data-bs-toggle="modal" data-bs-target="#budget-modal" className = "modalTitle-budget d-flex justify-content-center" href = "#" 
         >Set Budget</a>
       </div>
 

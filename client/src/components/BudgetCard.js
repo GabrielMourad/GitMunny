@@ -19,7 +19,7 @@ export default function BudgetCard() {
       </div>
 
       <div>
-        <a data-bs-toggle="modal" data-bs-target="#transaction-modal" className = "modalTitle d-flex justify-content-center" href = "#" 
+        <a data-bs-toggle="modal" data-bs-target="#transaction-modal" className = "modalTitle-transaction d-flex justify-content-center" href = "#" 
         >Add Transaction</a>
       </div>
 

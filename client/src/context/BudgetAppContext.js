@@ -56,15 +56,15 @@ function reducer(state, action){
 const initialState = {
     budget: 5000,
     expenses: [
-        { name: 'E-bike Jetson', cost: 276.13, date: '12/6/2022, 10:34:22',  id: 1, type: 'p' },
-        { name: 'iPhone 14', cost: 1311.98, date: '12/6/2022, 10:34:22',  id: 2, type: 'p'},
-        { name: 'Purchase 4', cost: 40, date: '12/6/2022, 10:34:22',  id: 3, type: 'p'},
-        { name: 'Purchase 3', cost: 50, date: '12/6/2022, 10:34:22',  id: 4, type: 'p'},
-        { name: 'Macbook Air', cost: 881.21, date: '12/6/2022, 10:34:22',  id: 5, type: 'p'},
-        { name: 'Purchase 2', cost: 120, date: '12/6/2022, 10:34:22',  id: 6, type: 'p'},
-        { name: 'Subway', cost: 11.13, date: '12/6/2022, 10:34:22',  id: 7, type: 'p'},
-        { name: 'El Pollo Loco', cost: 7.66, date: '12/6/2022, 10:34:22',  id: 8, type: 'p'},
-        { name : 'Purchase 1', cost: 50, date: '12/6/2022, 10:34:22',  id: 9, type: 'p'}
+        { name: 'E-bike Jetson', cost: 276.13, date: '12/6/2022, 10:34:22', type: 'p', id: 1, category: "Groceries" },
+        { name: 'iPhone 14', cost: 1311.98, date: '12/6/2022, 10:34:22', type: 'p', id: 2, category: "Groceries" },
+        { name: 'DEPOSIT', cost: 40, date: '12/6/2022, 10:34:22', type: 'd', id: 3, category: "Groceries" },
+        { name: 'DEPOSIT', cost: 50, date: '12/6/2022, 10:34:22', type: 'd', id: 4, category: "Groceries" },
+        { name: 'Macbook Air', cost: 881.21, date: '12/6/2022, 10:34:22', type: 'p', id: 5, category: "Groceries" },
+        { name: 'DEPOSIT', cost: 120, date: '12/6/2022, 10:34:22', type: 'd', id: 6, category: "Groceries" },
+        { name: 'Subway', cost: 11.13, date: '12/6/2022, 10:34:22', type: 'p', id: 7, category: "Groceries" },
+        { name: 'El Pollo Loco', cost: 7.66, date: '12/6/2022, 10:34:22', type: 'p', id: 8, category: "Rent" },
+        { name: 'DEPOSIT', cost: 50, date: '12/6/2022, 10:34:22', type: 'd', id: 9, category: "Groceries" },
     ],
 
     
@@ -73,7 +73,10 @@ const initialState = {
     
 }
 
-initialState.totalExpenses = initialState.expenses.reduce((acc, expense) => acc + expense.cost, 0);
+initialState.totalExpenses = initialState.expenses
+  .filter(expense => expense.type === "p")
+  .reduce((acc, expense) => acc + expense.cost, 0);
+
 initialState.remainding = initialState.budget - initialState.totalExpenses;
 
 

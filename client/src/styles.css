@@ -22,25 +22,48 @@ body {
 }
 
 .expense-list{
-    height: 600px;
+    height: 50vh;
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
-.progress{
+.progress-total
+{
     height: 20px;
 }
 
-.progress-bar{
-    width: var(--prog-percent);
-    
+.progress-category{
+
+    height:20px;
+    width: 50%
+
 }
 
-.modalTitle{
+.bar-total{
+    width: var(--prog-percent); 
+}
+
+.modalTitle-transaction{
     text-decoration: none;
     font-weight: 400;
     font-size: 10;
-    color: rgb(201, 49, 49);
+    color: rgb(204, 71, 71)
+
+}
+
+.modalTitle-deposit{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 10;
+    color: rgb(107, 223, 107)
+}
+
+.modalTitle-budget{
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 10;
+    color: rgb(238, 238, 114)
 }
 
 .modal-budget{

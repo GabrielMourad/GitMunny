@@ -34,9 +34,10 @@ export default function DepositModal() {
   return (
     <>
       <div>
-        <a data-bs-toggle="modal" data-bs-target="#deposit-modal" className = "modalTitle d-flex justify-content-center" href = "/#" 
+        <a data-bs-toggle="modal" data-bs-target="#deposit-modal" className = "modalTitle-deposit d-flex justify-content-center" href = "/#" 
         >Deposit Money</a>
       </div>
+
       <div class="modal fade" id="deposit-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog text-dark">
           <div class="modal-content">
