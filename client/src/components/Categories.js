@@ -8,9 +8,14 @@ export default function Categories() {
     // .filter(expense => expense.type === "p")
     // .reduce((acc, expense) => acc + expense.cost, 0);
 
-    
+    // useEffect(() => {
+    //     document.documentElement.style.setProperty('--prog-percent', `${percent}%`)
+    //   },[percent])
   
-  const percent = (Math.floor((totalExpenses/budget) * 100));
+  const groceryPercent = (Math.floor((totalExpenses/budget) * 100));
+  const rentPercent = (Math.floor((totalExpenses/budget) * 100));
+  const gasPercent = (Math.floor((totalExpenses/budget) * 100));
+
   return (
     <div>
         <h5 className = "mt-3">Groceries</h5>

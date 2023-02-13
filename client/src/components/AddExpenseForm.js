@@ -11,12 +11,30 @@ export default function AddExpenseForm() {
 
   const [name, setName] = useState('');
   const [cost, setCost] = useState('');
+  const [category, setCategory] = useState('');
 
+  const categories = [
+    {
+      label: "Grocery",
+      value: "grocery",
+    },
 
+    {
+      label: "Rent",
+      value: "rent",
+    },
+
+    {
+      label: "Gas",
+      value: "gas",
+    },
+
+  ]
 
   function onSubmit(e){
     e.preventDefault();
     
+    alert(category)
 
     const expense = {
       id: uuidv4(),
@@ -56,6 +74,14 @@ export default function AddExpenseForm() {
             <label for = 'cost'>Cost</label>
             <input required = 'required' type = 'number' className = 'form-control' id ='cost' value = {cost} onChange = {e => setCost(e.target.value)}></input>
         </div>
+
+        <select value = {category} onChange = {e => setCategory(e.target.value)} class="form-select form-select-sm"  aria-label=".form-select-sm example">
+          <option selected>Select Category</option>
+          {categories.map((category) => (
+              <option value = {category.value}>{category.label}</option>
+            ))}
+      
+       </select>
 
      
     </form>

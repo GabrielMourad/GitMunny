@@ -33,7 +33,7 @@ function Dashboard() {
             <ProgressBar/>
         </div>
 
-        <h3 className = 'mt-4'>Categories</h3>
+        <h3 className = 'mt-5'>Categories</h3>
 
         <div class = " ">
             <Categories/>
