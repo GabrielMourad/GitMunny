@@ -22,7 +22,7 @@ body {
 }
 
 .expense-list{
-    height: 50vh;
+    height: 60vh;
     overflow: hidden;
     overflow-x: hidden;
     overflow-y: auto;
