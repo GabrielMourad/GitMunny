@@ -34,14 +34,14 @@ export default function AddExpenseForm() {
   function onSubmit(e){
     e.preventDefault();
     
-    alert(category)
 
     const expense = {
       id: uuidv4(),
       name: name,
       cost: parseFloat(cost),
       date: new Date().toLocaleString(),
-      type: 'p'
+      type: 'p',
+      category: category
     }
    
     dispatch({

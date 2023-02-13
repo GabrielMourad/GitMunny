@@ -56,15 +56,15 @@ function reducer(state, action){
 const initialState = {
     budget: 5000,
     expenses: [
-        { name: 'E-bike Jetson', cost: 276.13, date: '12/6/2022, 10:34:22', type: 'p', id: 1, category: "Groceries" },
-        { name: 'iPhone 14', cost: 1311.98, date: '12/6/2022, 10:34:22', type: 'p', id: 2, category: "Groceries" },
-        { name: 'DEPOSIT', cost: 40, date: '12/6/2022, 10:34:22', type: 'd', id: 3, category: "Groceries" },
-        { name: 'DEPOSIT', cost: 50, date: '12/6/2022, 10:34:22', type: 'd', id: 4, category: "Groceries" },
-        { name: 'Macbook Air', cost: 881.21, date: '12/6/2022, 10:34:22', type: 'p', id: 5, category: "Groceries" },
-        { name: 'DEPOSIT', cost: 120, date: '12/6/2022, 10:34:22', type: 'd', id: 6, category: "Groceries" },
-        { name: 'Subway', cost: 11.13, date: '12/6/2022, 10:34:22', type: 'p', id: 7, category: "Groceries" },
-        { name: 'El Pollo Loco', cost: 7.66, date: '12/6/2022, 10:34:22', type: 'p', id: 8, category: "Rent" },
-        { name: 'DEPOSIT', cost: 50, date: '12/6/2022, 10:34:22', type: 'd', id: 9, category: "Groceries" },
+        { name: 'E-bike Jetson', cost: 276.13, date: '12/6/2022, 10:34:22', type: 'p', id: 1, category: "grocery" },
+        { name: 'iPhone 14', cost: 1311.98, date: '12/6/2022, 10:34:22', type: 'p', id: 2, category: "grocery" },
+        { name: 'DEPOSIT', cost: 40, date: '12/6/2022, 10:34:22', type: 'd', id: 3, category: "grocery" },
+        { name: 'DEPOSIT', cost: 50, date: '12/6/2022, 10:34:22', type: 'd', id: 4, category: "grocery" },
+        { name: 'Macbook Air', cost: 881.21, date: '12/6/2022, 10:34:22', type: 'p', id: 5, category: "grocery" },
+        { name: 'DEPOSIT', cost: 120, date: '12/6/2022, 10:34:22', type: 'd', id: 6, category: "grocery" },
+        { name: 'Subway', cost: 11.13, date: '12/6/2022, 10:34:22', type: 'p', id: 7, category: "grocery" },
+        { name: 'El Pollo Loco', cost: 7.66, date: '12/6/2022, 10:34:22', type: 'p', id: 8, category: "gas" },
+        { name: 'DEPOSIT', cost: 50, date: '12/6/2022, 10:34:22', type: 'd', id: 9, category: "grocery" },
     ],
 
     

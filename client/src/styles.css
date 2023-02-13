@@ -44,8 +44,23 @@ body {
 
 }
 
+
+
+
 .bar-total{
     width: var(--prog-percent); 
+}
+
+.bar-total-grocery{
+    width: var(--prog-percent-grocery);
+}
+
+.bar-total-rent{
+    width: var(--prog-percent-rent);
+}
+
+.bar-total-gas{
+    width: var(--prog-percent-gas);
 }
 
 .modalTitle-transaction{
