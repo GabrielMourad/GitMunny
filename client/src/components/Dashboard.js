@@ -5,8 +5,7 @@ import ExpenseTotal from './ExpenseTotal';
 import ProgressBar from './ProgressBar';
 import ExpenseList from './ExpenseList';
 import 'react-toastify/dist/ReactToastify.css';
-import {  toast, ToastContainer } from 'react-toastify';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {ToastContainer } from 'react-toastify';
 
 function Dashboard() {
   return (
@@ -33,6 +32,9 @@ function Dashboard() {
             <ProgressBar/>
         </div>
 
+        <div>
+            Categories
+        </div>
 
         <h3 className = 'mt-5'>Expenses</h3>
         <div className = 'mt-3'>
