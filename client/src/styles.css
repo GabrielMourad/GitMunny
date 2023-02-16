@@ -63,6 +63,7 @@ body {
     width: var(--prog-percent-gas);
 }
 
+
 .modalTitle-transaction{
     text-decoration: none;
     font-weight: 400;

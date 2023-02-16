@@ -35,7 +35,7 @@ function Dashboard() {
 
         <h3 className = 'mt-5'>Categories</h3>
 
-        <div class = " ">
+        <div>
             <Categories/>
         </div>
 

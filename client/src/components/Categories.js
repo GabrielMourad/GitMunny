@@ -43,6 +43,8 @@ export default function Categories() {
   },[gasPercent])
 
   return (
+    <>
+    
     <div>
         <h5 className = "mt-3">Groceries</h5>
         <div class="progress progress-category mt-2">
@@ -59,18 +61,24 @@ export default function Categories() {
             <div class= {`progress-bar bar-total-gas bg-danger`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
 
-        {/* <div class="progress">
-            <div class="progress-bar progress-bar-success" role="progressbar">
-                Free Space
-            </div>
-            <div class="progress-bar progress-bar-warning" role="progressbar">
-                Warning
-            </div>
-            <div class="progress-bar progress-bar-danger" role="progressbar" >
-                Danger
-            </div>
-        </div> */} 
 
-        </div>
+        <div class="progress mt-2">
+             <div class= {`progress-bar progress-category bar-total-grocery bg-success`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+             </div>
+             <div class= {`progress-bar progress-category bar-total-rent bg-warning`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+            </div>
+           <div class= {`progress-bar progress-category bar-total-gas bg-danger`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> 
+    </div>
+    <div>
+      <ul style={{ display: 'flex', flexDirection: 'row', listStyleType: 'none', margin: 0, padding: 0, justifyContent: 'flex-start' }}>
+          <li className="category-name" style={{  paddingLeft: '20px' }}>• Grocery</li>
+          <li className="category-name" style={{ marginRight: '10px', paddingLeft: '20px' }}>• Rent</li>
+          <li className="category-name" style={{ paddingLeft: '20px' }}>• Gas</li>
+      </ul>
+  </div>
+
+    </>
+
   )
 }
