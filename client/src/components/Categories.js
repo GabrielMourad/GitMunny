@@ -1,16 +1,11 @@
 import React, { useContext, useEffect } from 'react'
+import { useState } from 'react';
 import { BudgetAppContext } from '../context/BudgetAppContext';
 
 export default function Categories() {
     
-    const {budget, totalExpenses, expenses} = useContext(BudgetAppContext);
-    // initialState.totalExpenses = initialState.expenses
-    // .filter(expense => expense.type === "p")
-    // .reduce((acc, expense) => acc + expense.cost, 0);
-
-    // useEffect(() => {
-    //     document.documentElement.style.setProperty('--prog-percent', `${percent}%`)
-    //   },[percent])
+  const {budget, expenses} = useContext(BudgetAppContext);
+  const [option, setOption] = useState(1);
   const totalGrocery = expenses
     .filter(expense => expense.category === "grocery")
     .reduce((acc, expense) => acc + expense.cost, 0);
@@ -42,11 +37,52 @@ export default function Categories() {
     document.documentElement.style.setProperty('--prog-percent-gas', `${gasPercent}%`)
   },[gasPercent])
 
+
+  if (option == 1){
+    return(
+      <>
+    <div class="progress-category-together progress mt-4">
+             <div class= {`progress-bar progress-category bar-total-grocery bg-success progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+             </div>
+             <div class= {`progress-bar progress-category bar-total-rent bg-warning progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+            </div>
+           <div class= {`progress-bar progress-category bar-total-gas bg-danger progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        </div> 
+      
+      <div>
+        <ul className = "mt-2" style={{ display: 'flex', flexDirection: 'row', listStyleType: 'none', margin: 0, padding: 0, justifyContent: 'flex-start' }}>
+            <li className="category-name text-success" style={{  paddingLeft: '20px' }}>• Grocery</li>
+            <li className="category-name text-warning" style={{ marginRight: '10px', paddingLeft: '20px' }}>• Rent</li>
+            <li className="category-name text-danger" style={{ paddingLeft: '20px' }}>• Gas</li>
+        </ul>
+    </div> 
+
+    <div className="option-btn ">
+      <button className = "btn btn-light" onClick = {() => setOption(option + 1)} >Toggle</button>
+    </div>
+
+      </>
+    )
+  }
+
+  if (option === 3){
+    //https://cdn.discordapp.com/attachments/1013580066309017603/1024099213019185212/Snapchat-866511628.jpg
+    return(
+      <>
+      <img className = "sergio" src = 'https://cdn.discordapp.com/attachments/1013580066309017603/1024099213019185212/Snapchat-866511628.jpg'></img>
+        <div className="option-btn">
+          <button className = "btn btn-light" onClick = {() => setOption(1)} >Toggle</button>
+        </div>
+      </>
+    )
+  }
+
   return (
     <>
     
-    <div>
-        <h5 className = "mt-3">Groceries</h5>
+
+      <div className = "category-container">
+      <h5 className = "mt-3">Groceries</h5>
         <div class="progress progress-category mt-2">
             <div class= {`progress-bar bar-total-grocery bg-danger`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
@@ -60,23 +96,11 @@ export default function Categories() {
         <div class="progress progress-category mt-2">
             <div class= {`progress-bar bar-total-gas bg-danger`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
+      </div>
 
-
-        <div class="progress mt-2">
-             <div class= {`progress-bar progress-category bar-total-grocery bg-success`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-             </div>
-             <div class= {`progress-bar progress-category bar-total-rent bg-warning`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-            </div>
-           <div class= {`progress-bar progress-category bar-total-gas bg-danger`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-        </div> 
+    <div className="option-btn">
+      <button className = "btn btn-light" onClick = {() => setOption(option + 1)} >Toggle</button>
     </div>
-    <div>
-      <ul style={{ display: 'flex', flexDirection: 'row', listStyleType: 'none', margin: 0, padding: 0, justifyContent: 'flex-start' }}>
-          <li className="category-name" style={{  paddingLeft: '20px' }}>• Grocery</li>
-          <li className="category-name" style={{ marginRight: '10px', paddingLeft: '20px' }}>• Rent</li>
-          <li className="category-name" style={{ paddingLeft: '20px' }}>• Gas</li>
-      </ul>
-  </div>
 
     </>
 

@@ -37,16 +37,36 @@ body {
     height: 20px;
 }
 
+.category-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 .progress-category{
 
-    height:20px;
+    height:25px;
     width: 50%
+    
+}
 
+.progress-category-together{
+    height: 50px;
+    
 }
 
 
+.option-btn{
+    
+    text-align: right;
+    margin-top: 10px;
+    
+}
 
-
+.sergio{
+    height: 30em;
+    width: 70em;
+}
 .bar-total{
     width: var(--prog-percent); 
 }
