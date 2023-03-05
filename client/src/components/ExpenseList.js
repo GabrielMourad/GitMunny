@@ -22,7 +22,8 @@ export default function ExpenseList() {
   return (
     <>
     
-    <select onChange = {e => handleCategoryView(e)} className = "mb-2"> 
+    <select onChange = {e => handleCategoryView(e)} className = "form-select mb-2"> 
+
       <option value = "all">all</option>
       {categories.map((category) => (
               <option value = {category.value}>{category.label}</option>
