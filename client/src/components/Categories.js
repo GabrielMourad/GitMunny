@@ -4,8 +4,15 @@ import { BudgetAppContext } from '../context/BudgetAppContext';
 
 export default function Categories() {
     
-  const {budget, expenses} = useContext(BudgetAppContext);
+  const {budget, expenses, categories} = useContext(BudgetAppContext);
   const [option, setOption] = useState(1);
+  const [categoryColor, setCategoryColor] = useState({
+      "grocery": 'success',
+      "rent" : 'warning',
+      "gas" : 'danger'
+    }
+  )
+
   const totalGrocery = expenses
     .filter(expense => expense.category === "grocery")
     .reduce((acc, expense) => acc + expense.cost, 0);
@@ -51,9 +58,11 @@ export default function Categories() {
       
       <div>
         <ul className = "mt-2" style={{ display: 'flex', flexDirection: 'row', listStyleType: 'none', margin: 0, padding: 0, justifyContent: 'flex-start' }}>
-            <li className="category-name text-success" style={{  paddingLeft: '20px' }}>• Grocery</li>
-            <li className="category-name text-warning" style={{ marginRight: '10px', paddingLeft: '20px' }}>• Rent</li>
-            <li className="category-name text-danger" style={{ paddingLeft: '20px' }}>• Gas</li>
+
+        {categories.map((category) => (
+            <li className={`category-name text-${categoryColor[category.value]}`} style={{ marginRight: '10px', paddingLeft: '20px' }}>• {category.label}</li>
+              
+            ))}
         </ul>
     </div> 
 
