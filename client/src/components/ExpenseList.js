@@ -6,23 +6,33 @@ export default function ExpenseList() {
     const {expenses, categories} = useContext(BudgetAppContext);
     const [viewExpenses, setViewExpenses] = useState(expenses)
     
-    useEffect(() => {
-      setViewExpenses(expenses);
-    }, [expenses]);
+
+   
+
+
     
+    useEffect(() => {
+      // Remove deleted expense from viewExpenses
+      setViewExpenses(viewExpenses.filter(expense => expenses.includes(expense)));
+    }, [expenses]);
+
     const handleCategoryView = (e) => {
-      
       e.preventDefault();
-      if(e.target.value === "all"){
+
+      const categoryType = e.target.value
+
+      console.log("C", categoryType)
+
+      if(categoryType === "all"){
         setViewExpenses(expenses)
         
       }else{
-        setViewExpenses(expenses.filter(expense => expense.category === e.target.value)) 
+        setViewExpenses(expenses.filter(expense => expense.category === categoryType)) 
+        
       }
     }
     
-   
-    console.log(viewExpenses)
+  
   return (
     <>
     
