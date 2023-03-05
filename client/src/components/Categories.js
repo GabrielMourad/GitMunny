@@ -60,7 +60,7 @@ export default function Categories() {
         <ul className = "mt-2" style={{ display: 'flex', flexDirection: 'row', listStyleType: 'none', margin: 0, padding: 0, justifyContent: 'flex-start' }}>
 
         {categories.map((category) => (
-            <li className={`category-name text-${categoryColor[category.value]}`} style={{ marginRight: '10px', paddingLeft: '20px' }}>• {category.label}</li>
+            <li key = {category.label} className={`category-name text-${categoryColor[category.value]}`} style={{ marginRight: '10px', paddingLeft: '20px' }}>• {category.label}</li>
               
             ))}
         </ul>

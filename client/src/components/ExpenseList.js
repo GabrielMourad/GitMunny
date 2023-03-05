@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import ExpenseItem from './ExpenseItem'
 import { BudgetAppContext } from '../context/BudgetAppContext'
 
@@ -6,19 +6,23 @@ export default function ExpenseList() {
     const {expenses, categories} = useContext(BudgetAppContext);
     const [viewExpenses, setViewExpenses] = useState(expenses)
     
-
+    useEffect(() => {
+      setViewExpenses(expenses);
+    }, [expenses]);
+    
     const handleCategoryView = (e) => {
-
-        e.preventDefault();
-        if(e.target.value === "all"){
-           setViewExpenses(expenses)
-           
-        }else{
-          setViewExpenses(expenses.filter(expense => expense.category === e.target.value)) 
-        }
+      
+      e.preventDefault();
+      if(e.target.value === "all"){
+        setViewExpenses(expenses)
+        
+      }else{
+        setViewExpenses(expenses.filter(expense => expense.category === e.target.value)) 
+      }
     }
     
-
+   
+    console.log(viewExpenses)
   return (
     <>
     
@@ -26,7 +30,7 @@ export default function ExpenseList() {
 
       <option value = "all">all</option>
       {categories.map((category) => (
-              <option value = {category.value}>{category.label}</option>
+              <option key = {category.value} value = {category.value}>{category.label}</option>
             ))}
     </select>
     
