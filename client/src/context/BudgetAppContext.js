@@ -73,7 +73,23 @@ const initialState = {
         { name: 'DEPOSIT', cost: 300, date: '02/15/2023, 10:00:00', type: 'd', id: 15, category: 'misc' },
     ],
 
+    categories : [
+        {
+          label: "Grocery",
+          value: "grocery",
+        },
     
+        {
+          label: "Rent",
+          value: "rent",
+        },
+    
+        {
+          label: "Gas",
+          value: "gas",
+        }
+    
+      ]  
     
     
     
@@ -101,6 +117,7 @@ export const BudgetContextProvider = (props) => {
             expenses: state.expenses,
             totalExpenses: state.totalExpenses,
             remainding: state.remainding,
+            categories: state.categories,
             dispatch
             
            

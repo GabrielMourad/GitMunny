@@ -1,21 +1,43 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import ExpenseItem from './ExpenseItem'
 import { BudgetAppContext } from '../context/BudgetAppContext'
 
 export default function ExpenseList() {
-    const {expenses} = useContext(BudgetAppContext);
+    const {expenses, categories} = useContext(BudgetAppContext);
+    const [viewExpenses, setViewExpenses] = useState(expenses)
     
+
+    const handleCategoryView = (e) => {
+
+        e.preventDefault();
+        if(e.target.value === "all"){
+           setViewExpenses(expenses)
+           
+        }else{
+          setViewExpenses(expenses.filter(expense => expense.category === e.target.value)) 
+        }
+    }
     
 
   return (
+    <>
+    
+    <select onChange = {e => handleCategoryView(e)} className = "mb-2"> 
+      <option value = "all">all</option>
+      {categories.map((category) => (
+              <option value = {category.value}>{category.label}</option>
+            ))}
+    </select>
+    
     <div className='expense-list'>
         <ul className = 'list-group mb-3'>
-          
-            {expenses.map((expense) => (
+
+            {viewExpenses.map((expense) => (
                 
                 <ExpenseItem key = {expense.id} id = {expense.id} name = {expense.name} cost = {expense.cost} date = {expense.date} type = {expense.type}/>
             ))}
         </ul>
     </div>
+    </>
   )
 }

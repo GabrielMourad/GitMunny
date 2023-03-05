@@ -7,29 +7,13 @@ import {  toast } from 'react-toastify';
 
 
 export default function AddExpenseForm() {
-  const {dispatch} = useContext(BudgetAppContext);
+  const {dispatch, categories} = useContext(BudgetAppContext);
 
   const [name, setName] = useState('');
   const [cost, setCost] = useState('');
   const [category, setCategory] = useState('');
 
-  const categories = [
-    {
-      label: "Grocery",
-      value: "grocery",
-    },
-
-    {
-      label: "Rent",
-      value: "rent",
-    },
-
-    {
-      label: "Gas",
-      value: "gas",
-    },
-
-  ]
+  
 
   function onSubmit(e){
     e.preventDefault();
