@@ -11,26 +11,27 @@ export default function ExpenseList() {
 
 
     
-    useEffect(() => {
-      // Remove deleted expense from viewExpenses
-      setViewExpenses(viewExpenses.filter(expense => expenses.includes(expense)));
+    useEffect(() => { 
+      setViewExpenses([...expenses]);   
     }, [expenses]);
 
     const handleCategoryView = (e) => {
       e.preventDefault();
 
       const categoryType = e.target.value
-
-      console.log("C", categoryType)
+      let filteredExpenses;
 
       if(categoryType === "all"){
-        setViewExpenses(expenses)
+        filteredExpenses = [...expenses]
         
       }else{
-        setViewExpenses(expenses.filter(expense => expense.category === categoryType)) 
+        filteredExpenses = expenses.filter(expense => expense.category === categoryType)
         
       }
+
+      setViewExpenses(filteredExpenses)
     }
+    console.log("E: ", expenses)
     
   
   return (
