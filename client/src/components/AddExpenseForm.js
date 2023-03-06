@@ -59,8 +59,11 @@ export default function AddExpenseForm() {
             <input required = 'required' type = 'number' className = 'form-control' id ='cost' value = {cost} onChange = {e => setCost(e.target.value)}></input>
         </div>
 
-        <select value = {category} onChange = {e => setCategory(e.target.value)} class="form-select form-select-sm"  aria-label=".form-select-sm example">
-          <option selected>Select Category</option>
+        <select value = {category} onChange = {e => setCategory(e.target.value)} 
+        class="form-select form-select-sm"  aria-label=".form-select-sm example" 
+        required onInvalid={(e) => { e.target.setCustomValidity('Please select a category') }}>
+
+          <option disabled selected value="" >Select Category</option>
           {categories.map((category) => (
               <option value = {category.value}>{category.label}</option>
             ))}
