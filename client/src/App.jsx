@@ -4,6 +4,7 @@ import { BudgetContextProvider } from './context/BudgetAppContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from './components/LoginPage';
+import Signup from './components/Signup';
 
 const App = () => {
   
@@ -12,6 +13,7 @@ const App = () => {
             <BrowserRouter>
                 <Routes>
                     <Route exact path="/login" element={<LoginPage/>}/>
+                    <Route exact path="/signup" element={<Signup/>}/>
                     <Route exact path="/" element={<Dashboard/>}/>
                     
                 </Routes>

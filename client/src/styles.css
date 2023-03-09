@@ -173,6 +173,14 @@ body {
     animation-iteration-count: 2
 }
 
+.login-form h2 {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 36px; /* Set the font size to 36 pixels */
+    color: #333; /* Set the color to dark gray */
+    position: relative; /* Set the position to relative */
+}
+
 
 .container-login {
     margin-top: 50px;

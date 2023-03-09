@@ -28,7 +28,7 @@ const LoginPage = () => {
                     <button type="submit" class="btn btn-primary-login">Login</button>
                 </form>
                 <div class="signup-section">
-                    <p>Don't have an account yet? <a href="#">Sign Up</a></p>
+                    <p>Don't have an account yet? <a href="/signup">Sign Up</a></p>
                 </div>
             </div>
         </div>
