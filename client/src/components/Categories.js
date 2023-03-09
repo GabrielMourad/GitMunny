@@ -45,7 +45,7 @@ export default function Categories() {
   },[gasPercent])
 
 
-  if (option == 1){
+  if (option === 1){
     return(
       <>
     <div class="progress-category-together progress mt-4">

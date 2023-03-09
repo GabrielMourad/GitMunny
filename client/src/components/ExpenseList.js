@@ -6,10 +6,6 @@ export default function ExpenseList() {
     const {expenses, categories} = useContext(BudgetAppContext);
     const [viewExpenses, setViewExpenses] = useState(expenses)
     
-
-   
-
-
     
     useEffect(() => { 
       setViewExpenses([...expenses]);   

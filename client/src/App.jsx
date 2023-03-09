@@ -3,6 +3,7 @@ import Dashboard from './components/Dashboard';
 import { BudgetContextProvider } from './context/BudgetAppContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoginPage from './components/LoginPage';
 
 const App = () => {
   
@@ -10,9 +11,9 @@ const App = () => {
         <BudgetContextProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route exact path="/" element={<Dashboard/>}>
+                    <Route exact path="/login" element={<LoginPage/>}/>
+                    <Route exact path="/" element={<Dashboard/>}/>
                     
-                    </Route>
                 </Routes>
             </BrowserRouter>
 
