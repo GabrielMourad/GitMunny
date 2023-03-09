@@ -111,6 +111,7 @@ body {
     background-color: #2d2e30;
 }
 
+/* LOGIN AND SIGN IN */
 .login-form {
     background-color: #ffffff;
     border: 1px solid #e6e6e6;
@@ -172,7 +173,7 @@ body {
     animation-iteration-count: 2
 }
 
-/* LOGIN AND SIGN IN */
+
 .container-login {
     margin-top: 50px;
 }
