@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Signup() {
   return (
-    <div class="container">
+    <div class="container-signup">
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="signup-form">
@@ -24,9 +24,9 @@ export default function Signup() {
                             <label for="confirm-password">Confirm Password</label>
                             <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your password"/>
                         </div>
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                        <button type="submit" class="btn btn-signup">Sign Up</button>
                     </form>
-                    <div class="login-section">
+                    <div class="signup-sectiong">
                         <p>Already have an account? <a href="/login">Log In</a></p>
                     </div>
                 </div>
