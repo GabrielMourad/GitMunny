@@ -1,5 +1,5 @@
 body {
-    margin: 0;
+    margin: 0 auto;
     background-color : #2d2e30;
     color: white
     
@@ -92,6 +92,10 @@ body {
 
 }
 
+.modalTitle-transaction:hover{
+    color: rgb(204, 71, 71)
+}
+
 .modalTitle-deposit{
     text-decoration: none;
     font-weight: 400;
@@ -99,10 +103,18 @@ body {
     color: rgb(107, 223, 107)
 }
 
+.modalTitle-deposit:hover{
+    color: rgb(107, 223, 107)
+}
+
 .modalTitle-budget{
     text-decoration: none;
     font-weight: 400;
     font-size: 10;
+    color: rgb(238, 238, 114)
+}
+
+.modalTitle-budget:hover{
     color: rgb(238, 238, 114)
 }
 
@@ -129,22 +141,8 @@ body {
     margin-bottom: 20px;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-}
 
-.form-control {
-    height: 50px;
-    border-radius: 25px;
-    box-shadow: none;
-    border: 1px solid #e6e6e6;
-}
 
-.form-control:focus {
-    border-color: #00b4db;
-    box-shadow: none;
-}
 
 .btn-primary-login{
     color:white;
@@ -239,23 +237,23 @@ body {
     background-color: #00b4db;
 }
 
-.form-group {
+.form-group-login {
     margin-bottom: 20px;
 }
 
-.form-group label {
+.form-group-login label {
     display: block;
     margin-bottom: 5px;
 }
 
-.form-control {
+.form-control-login {
     height: 50px;
     border-radius: 25px;
     box-shadow: none;
     border: 1px solid #e6e6e6;
 }
 
-.form-control:focus {
+.form-control-login:focus {
     border-color: #00b4db;
     box-shadow: none;
 }
