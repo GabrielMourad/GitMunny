@@ -134,17 +134,6 @@ body {
     margin-bottom: 5px;
 }
 
-.form-control {
-    height: 50px;
-    border-radius: 25px;
-    box-shadow: none;
-    border: 1px solid #e6e6e6;
-}
-
-.form-control:focus {
-    border-color: #00b4db;
-    box-shadow: none;
-}
 
 .btn-primary-login{
     color:white;
@@ -248,17 +237,7 @@ body {
     margin-bottom: 5px;
 }
 
-.form-control {
-    height: 50px;
-    border-radius: 25px;
-    box-shadow: none;
-    border: 1px solid #e6e6e6;
-}
 
-.form-control:focus {
-    border-color: #00b4db;
-    box-shadow: none;
-}
 
 .btn-signup {
     display: inline-block;
