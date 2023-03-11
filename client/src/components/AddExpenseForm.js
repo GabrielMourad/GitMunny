@@ -32,13 +32,9 @@ export default function AddExpenseForm() {
       type: 'ADD_EXPENSE',
       payload: expense
     })
-
-    
     
     toast.success("Expense Set Successfully")
     document.getElementById("close-modal").click();
-    
-    
     
     
   }
