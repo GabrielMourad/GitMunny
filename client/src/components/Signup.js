@@ -26,7 +26,7 @@ export default function Signup() {
                         </div>
                         <button type="submit" class="btn btn-signup">Sign Up</button>
                     </form>
-                    <div class="signup-sectiong">
+                    <div class="signup-section">
                         <p>Already have an account? <a href="/login">Log In</a></p>
                     </div>
                 </div>
