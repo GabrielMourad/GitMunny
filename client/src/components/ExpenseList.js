@@ -8,7 +8,7 @@ export default function ExpenseList() {
     
     
     useEffect(() => { 
-      setViewExpenses([...expenses]);   
+      setViewExpenses(viewExpenses.filter((expense) => expenses.includes(expense)));   
     }, [expenses]);
 
     const handleCategoryView = (e) => {
@@ -26,8 +26,10 @@ export default function ExpenseList() {
       }
 
       setViewExpenses(filteredExpenses)
+
     }
-    console.log("E: ", expenses)
+    
+    console.log(viewExpenses)
     
   
   return (

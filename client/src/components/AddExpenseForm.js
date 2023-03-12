@@ -36,7 +36,9 @@ export default function AddExpenseForm() {
     toast.success("Expense Set Successfully")
     document.getElementById("close-modal").click();
     
-    
+    setName("")
+    setCategory("")
+    setCost("")
   }
   
 
