@@ -1,4 +1,4 @@
-import { createContext, useReducer} from "react"
+import { createContext, useReducer, useState} from "react"
 
 function reducer(state, action){
     switch(action.type){
@@ -109,6 +109,7 @@ export const BudgetAppContext = createContext();
 
 export const BudgetContextProvider = (props) => {
     const [state,dispatch] = useReducer(reducer, initialState)
+    const [isAuth, setIsAuth] = useState(false);
     
      
     return(

@@ -1,18 +1,23 @@
 
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import {getAuth, GoogleAuthProvider} from 'firebase/auth'
 
-const config = require("config")
+
+
 const firebaseConfig = {
-  apiKey: config.get("APIKEY"),
-  authDomain: config.get("AUTHDOMAIN"),
-  projectId: config.get("PROJECT_ID"),
-  storageBucket: config.get("STORAGEBUCKET"),
-  messagingSenderId: config.get("MESSAGING_SENDER_ID"),
-  appId: config.get("APP_ID"),
-  measurementId: config.get("MEASUREMENT_ID")
+    apiKey: "AIzaSyDV3Qc5xTGiR9g7_71qEVV_80sQZzsa89c",
+    authDomain: "gitmuney-3222e.firebaseapp.com",
+    projectId: "gitmuney-3222e",
+    storageBucket: "gitmuney-3222e.appspot.com",
+    messagingSenderId: "847719830073",
+    appId: "1:847719830073:web:66f41e044fb30ea21273e8",
+    measurementId: "G-0CT8W111V2"
 };
 
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+export const auth = getAuth(app)
+
+export const provider = new GoogleAuthProvider()
+
