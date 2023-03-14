@@ -124,180 +124,18 @@ body {
 }
 
 /* LOGIN AND SIGN IN */
-.login-form {
-    height: 2;
-    background-color: #ffffff;
-    border: 1px solid #e6e6e6;
-    padding: 20px; /* reduce the padding */
-    border-radius: 5px;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-    font-size: 14px; /* reduce the font size */
+.loginPage {
+    width: 100vw;
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   
-
-
-  .login-form h2 {
-    margin-bottom: 20px; /* reduce the margin */
-    text-align: center;
-    font-size: 24px; /* reduce the font size */
+  .loginPage p {
+    font-size: 30px;
   }
-
-
-  .form-group {
-    margin-bottom: 10px; /* reduce the margin */
-  }
-
-
-
-
-.btn-primary-login{
-    color:white;
-    background-color: #00b4db;
-    border-color: #00b4db;
-    border-radius: 25px;
-    height: 40px; /* reduce the height */
-    padding: 8px 20px; /* reduce the padding */
-    font-size: 16px; /* reduce the font size */
-    font-weight: bold;
-  }
-
-.btn-primary-login:hover {
-    background-color: #0093ad;
-    border-color: #0093ad;
-}
-.login-form {
-    color: black;
-    background-color: #ffffff;
-    border: 1px solid #e6e6e6;
-    padding: 40px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-   
-}
-
-.login-form h2 {
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 36px; /* Set the font size to 36 pixels */
-    color: #333; /* Set the color to dark gray */
-    position: relative; /* Set the position to relative */
-}
-
-
-.container-login {
-    margin-top: 50px;
-}
-
-
-.signup-section {
-    text-align: center;
-    margin-top: 25px;
-}
-
-.signup-section p {
-    margin-bottom: 0;
-}
-
-.signup-section a {
-    color: #00b4db;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.signup-section a:hover {
-    text-decoration: underline;
-}
-
-
-.container-signup {
-    margin-top: 50px;
-}
-
-.signup-form {
-    background-color: #ffffff;
-    border: 1px solid #e6e6e6;
-    padding: 40px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-    color: black
-}
-
-.signup-form h2 {
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 36px;
-    color: #333;
-    position: relative;
-}
-
-.signup-form h2::before {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 2px;
-    background-color: #00b4db;
-}
-
-.form-group-login {
-    margin-bottom: 20px;
-}
-
-.form-group-login label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.form-control-login {
-    height: 35px;
-    border-radius: 25px;
-    box-shadow: none;
-    border: 1px solid #e6e6e6;
-}
-
-.form-control-login:focus {
-    border-color: #00b4db;
-    box-shadow: none;
-}
-
-.btn-signup {
-    display: inline-block;
-    font-weight: 400;
-    color: #fff;
-    text-align: center;
-    vertical-align: middle;
-    user-select: none;
-    background-color: #00b4db;
-    border: 1px solid #00b4db;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 25px;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.btn-signup:hover {
-    color: #fff;
-    background-color: #0077b6;
-    border-color: #0077b6;
-}
-
-.btn-signup:focus, .btn-signup.focus {
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 180, 219, 0.25);
-}
-
-.btn-signup-primary {
-    background-color: #00b4db;
-    border-color: #00b4db;
-}
-
-.btn-signup-primary:hover {
-    background-color: #0077b6;
-    border-color: #0077b6;
-}
 
 .login-with-google-btn {
     transition: background-color .3s, box-shadow .3s;
@@ -359,11 +197,14 @@ li>a, .navbtn{
 
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 30px 10%;  
 }
-
+.nav_title{
+    cursor: pointer;
+    margin-right: auto;
+}
 .nav_links{
     list-style: none;
 }
@@ -382,7 +223,8 @@ header {
 }
 
 .navbtn{
-    padding: 9px 25px;
+    margin-left: 20px;
+    padding: 4px 20px;
     background-color: rgba(0,136,169,1);
     border: none;
     border-radius: 50px;

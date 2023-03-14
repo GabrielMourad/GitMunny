@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Dashboard from './components/Dashboard';
 import { BudgetContextProvider } from './context/BudgetAppContext';
 import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
 import {auth} from "../src/firebase/Firebase"
 import LoginPage from './components/LoginPage';
@@ -18,20 +19,18 @@ const App = () => {
             setIsAuth(false)
             window.location.pathname = "/login"
         })
-      }
-      
+        
+    }
+    
 
-      console.log(isAuth)
       
     return(
         <BudgetContextProvider>
             <BrowserRouter>
-                <Navbar/>
-                <button onClick = {signOut}>Logout</button>
+                <Navbar isAuth = {isAuth} signOut = {signOut}/>
 
                 <Routes>
                     <Route exact path="/login" element={!isAuth ? <LoginPage setIsAuth = {setIsAuth}/> : (<Navigate to = '/'/>)}/>
-                    <Route exact path="/signup" element={!isAuth ? <Signup setIsAuth = {setIsAuth}/> : (<Navigate to = '/'/>)}/>
                     <Route exact path="/" element={isAuth ? <Dashboard isAuth = {isAuth}/> : (<Navigate to = '/login'/>)}/>
                     
                 </Routes>
