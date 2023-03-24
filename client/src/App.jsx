@@ -6,7 +6,6 @@ import { toast } from 'react-toastify';
 import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
 import {auth} from "../src/firebase/Firebase"
 import LoginPage from './components/LoginPage';
-import Signup from './components/Signup';
 import Navbar from './components/Navbar';
 
 const App = () => {

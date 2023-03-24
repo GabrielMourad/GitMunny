@@ -9,27 +9,43 @@ export default function Categories() {
   const [categoryColor, setCategoryColor] = useState({
       "grocery": 'success',
       "rent" : 'warning',
-      "gas" : 'danger'
+      "entertainment" : 'danger',
+      "bills": 'secondary',
+      'taxes': 'info',
+      'misc' : 'primary',
+  
     }
   )
+  
+  function calculateTotal(type){
+      return expenses
+      .filter(expense => expense.category === type)
+      .reduce((acc, expense) => acc + expense.cost, 0);
+  }
 
-  const totalGrocery = expenses
-    .filter(expense => expense.category === "grocery")
-    .reduce((acc, expense) => acc + expense.cost, 0);
+  function calculatePercentage(total){
+    return (Math.floor((total/budget) * 100));
+  }
 
-  const totalRent = expenses
-    .filter(expense => expense.category === "rent")
-    .reduce((acc, expense) => acc + expense.cost, 0);
+  const totalGrocery = calculateTotal("grocery")
+  const totalRent = calculateTotal("rent")
+  const totalEntertainment = calculateTotal("entertainment")
+  const totalBills = calculateTotal("bills")
+  const totalTaxes = calculateTotal("taxes")
+  const totalMisc = calculateTotal("misc")
+  const totalInvesting = calculateTotal("investing")
 
-  const totalGas = expenses
-    .filter(expense => expense.category === "gas")
-    .reduce((acc, expense) => acc + expense.cost, 0);
+  const groceryPercent = calculatePercentage(totalGrocery)
+  const rentPercent = calculatePercentage(totalRent)
+  const entertainmentPercent = calculatePercentage(totalEntertainment)
+  const billsPercent = calculatePercentage(totalBills)
+  const taxesPercent = calculatePercentage(totalTaxes)
+  const miscPercent = calculatePercentage(totalMisc)
+  const investingPercent = calculatePercentage(totalInvesting)
 
   
  
-  const groceryPercent = (Math.floor((totalGrocery/budget) * 100));
-  const rentPercent = (Math.floor((totalRent/budget) * 100));
-  const gasPercent = (Math.floor((totalGas/budget) * 100));
+ 
 
 
   useEffect(() => {
@@ -41,8 +57,10 @@ export default function Categories() {
   },[rentPercent])
 
   useEffect(() => {
-    document.documentElement.style.setProperty('--prog-percent-gas', `${gasPercent}%`)
-  },[gasPercent])
+    document.documentElement.style.setProperty('--prog-percent-taxes', `${taxesPercent}%`)
+  },[taxesPercent])
+
+
 
 
   if (option === 1){
@@ -53,7 +71,7 @@ export default function Categories() {
              </div>
              <div class= {`progress-bar progress-category bar-total-rent bg-warning progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
             </div>
-           <div class= {`progress-bar progress-category bar-total-gas bg-danger progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+           <div class= {`progress-bar progress-category bar-total-taxes bg-${categoryColor["taxes"]} progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
         </div> 
       
       <div>

@@ -83,6 +83,9 @@ body {
     width: var(--prog-percent-gas);
 }
 
+.bar-total-taxes{
+   width: var(--prog-percent-taxes)
+}
 
 .modalTitle-transaction{
     text-decoration: none;
