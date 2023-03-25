@@ -87,6 +87,12 @@ body {
    width: var(--prog-percent-taxes)
 }
 
+.bar-total-investing{
+    width: var(--prog-percent-investing);
+    color:rgb(107, 223, 107);
+    
+}
+
 .modalTitle-transaction{
     text-decoration: none;
     font-weight: 400;

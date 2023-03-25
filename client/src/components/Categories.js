@@ -13,6 +13,7 @@ export default function Categories() {
       "bills": 'secondary',
       'taxes': 'info',
       'misc' : 'primary',
+      'investing': 'investcolor'
   
     }
   )
@@ -43,7 +44,7 @@ export default function Categories() {
   const miscPercent = calculatePercentage(totalMisc)
   const investingPercent = calculatePercentage(totalInvesting)
 
-  
+  console.log(categories)
  
  
 
@@ -60,6 +61,10 @@ export default function Categories() {
     document.documentElement.style.setProperty('--prog-percent-taxes', `${taxesPercent}%`)
   },[taxesPercent])
 
+  useEffect(() => {
+    document.documentElement.style.setProperty('--prog-percent-investing', `${investingPercent}%`)
+  },[investingPercent])
+
 
 
 
@@ -67,6 +72,8 @@ export default function Categories() {
     return(
       <>
     <div class="progress-category-together progress mt-4">
+    
+            
              <div class= {`progress-bar progress-category bar-total-grocery bg-success progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
              </div>
              <div class= {`progress-bar progress-category bar-total-rent bg-warning progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
@@ -78,7 +85,7 @@ export default function Categories() {
         <ul className = "mt-2" style={{ display: 'flex', flexDirection: 'row', listStyleType: 'none', margin: 0, padding: 0, justifyContent: 'flex-start' }}>
 
         {categories.map((category) => (
-            <li key = {category.label} className={`category-name text-${categoryColor[category.value]}`} style={{ marginRight: '10px', paddingLeft: '20px' }}>• {category.label}</li>
+            <li key = {category.label} className={`d-flex category-name text-${categoryColor[category.value]}`} style={{ marginRight: '10px', paddingLeft: '20px' }}>• {category.label}</li>
               
             ))}
         </ul>
@@ -109,20 +116,19 @@ export default function Categories() {
     
 
       <div className = "category-container">
-      <h5 className = "mt-3">Groceries</h5>
-        <div class="progress progress-category mt-2">
-            <div class= {`progress-bar bar-total-grocery bg-danger`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+      {categories.map((category) => (
+        <>
+          <h5 className="mt-3">{category.label}</h5>
+          <div className="progress progress-category mt-2">
+              <div className={`progress-bar bar-total-${category.value} bg-success`} role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+  </>
+))}
 
-        <h5 className = "mt-3">Rent</h5>
-        <div class="progress progress-category mt-2">
-            <div class= {`progress-bar bar-total-rent bg-danger`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+        
 
-        <h5 className = "mt-3">Gas</h5>
-        <div class="progress progress-category mt-2">
-            <div class= {`progress-bar bar-total-gas bg-danger`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+
+      
       </div>
 
     <div className="option-btn">
