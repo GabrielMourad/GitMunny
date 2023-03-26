@@ -89,10 +89,30 @@ body {
 
 .bar-total-investing{
     width: var(--prog-percent-investing);
-    color:rgb(107, 223, 107);
+    
     
 }
 
+.text-investcolor, .bar-total-investing{
+    color:rgb(107, 223, 107);
+
+}
+
+.bar-total-entertainment{
+    width: var(--prog-percent-entertainment);
+}
+
+.bar-total-bills{
+    width: var(--prog-percent-bills);
+}
+
+.bar-total-misc{
+    width: var(--prog-percent-misc);
+}
+
+.bg-investcolor{
+    background-color:rgb(107, 223, 107)
+}
 .modalTitle-transaction{
     text-decoration: none;
     font-weight: 400;

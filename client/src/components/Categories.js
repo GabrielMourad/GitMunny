@@ -47,23 +47,23 @@ export default function Categories() {
   console.log(categories)
  
  
-
-
   useEffect(() => {
-    document.documentElement.style.setProperty('--prog-percent-grocery', `${groceryPercent}%`)
-  },[groceryPercent])
+    const variables = {
+      '--prog-percent-grocery': groceryPercent,
+      '--prog-percent-rent': rentPercent,
+      '--prog-percent-taxes': taxesPercent,
+      '--prog-percent-entertainment': entertainmentPercent,
+      '--prog-percent-bills': billsPercent,
+      '--prog-percent-misc': miscPercent,
+      '--prog-percent-investing': investingPercent
+    };
+  
+    for (let variable in variables) {
+      document.documentElement.style.setProperty(variable, `${variables[variable]}%`);
+    }
+  }, [groceryPercent, rentPercent, taxesPercent, entertainmentPercent, billsPercent, miscPercent, investingPercent]);
+  
 
-  useEffect(() => {
-    document.documentElement.style.setProperty('--prog-percent-rent', `${rentPercent}%`)
-  },[rentPercent])
-
-  useEffect(() => {
-    document.documentElement.style.setProperty('--prog-percent-taxes', `${taxesPercent}%`)
-  },[taxesPercent])
-
-  useEffect(() => {
-    document.documentElement.style.setProperty('--prog-percent-investing', `${investingPercent}%`)
-  },[investingPercent])
 
 
 
@@ -72,13 +72,14 @@ export default function Categories() {
     return(
       <>
     <div class="progress-category-together progress mt-4">
-    
+        {categories.map((category) => (
+                <div key = {category.value} class= {`progress-bar progress-category bar-total-${category.value} bg-${categoryColor[category.value]} progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                </div>
+                  
+                ))}
             
-             <div class= {`progress-bar progress-category bar-total-grocery bg-success progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-             </div>
-             <div class= {`progress-bar progress-category bar-total-rent bg-warning progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-            </div>
-           <div class= {`progress-bar progress-category bar-total-taxes bg-${categoryColor["taxes"]} progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+            
+             
         </div> 
       
       <div>
@@ -122,8 +123,8 @@ export default function Categories() {
           <div className="progress progress-category mt-2">
               <div className={`progress-bar bar-total-${category.value} bg-success`} role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
-  </>
-))}
+    </>
+       ))}
 
         
 
