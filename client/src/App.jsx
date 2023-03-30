@@ -1,20 +1,36 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Dashboard from './components/Dashboard';
 import { BudgetContextProvider } from './context/BudgetAppContext';
 import 'react-toastify/dist/ReactToastify.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { toast } from 'react-toastify';
+import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
+import {auth} from "../src/firebase/Firebase"
 import LoginPage from './components/LoginPage';
-import Signup from './components/Signup';
+import Navbar from './components/Navbar';
 
 const App = () => {
-  
+
+    const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"))
+
+    const signOut = () => {
+        auth.signOut().then(() => {
+            localStorage.clear()
+            setIsAuth(false)
+            window.location.pathname = "/login"
+        })
+        
+    }
+    
+
+      
     return(
         <BudgetContextProvider>
             <BrowserRouter>
+                <Navbar isAuth = {isAuth} signOut = {signOut}/>
+
                 <Routes>
-                    <Route exact path="/login" element={<LoginPage/>}/>
-                    <Route exact path="/signup" element={<Signup/>}/>
-                    <Route exact path="/" element={<Dashboard/>}/>
+                    <Route exact path="/login" element={!isAuth ? <LoginPage setIsAuth = {setIsAuth}/> : (<Navigate to = '/'/>)}/>
+                    <Route exact path="/" element={isAuth ? <Dashboard isAuth = {isAuth}/> : (<Navigate to = '/login'/>)}/>
                     
                 </Routes>
             </BrowserRouter>

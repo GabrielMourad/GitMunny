@@ -9,58 +9,84 @@ export default function Categories() {
   const [categoryColor, setCategoryColor] = useState({
       "grocery": 'success',
       "rent" : 'warning',
-      "gas" : 'danger'
+      "entertainment" : 'danger',
+      "bills": 'secondary',
+      'taxes': 'info',
+      'misc' : 'primary',
+      'investing': 'investcolor'
+  
     }
   )
-
-  const totalGrocery = expenses
-    .filter(expense => expense.category === "grocery")
-    .reduce((acc, expense) => acc + expense.cost, 0);
-
-  const totalRent = expenses
-    .filter(expense => expense.category === "rent")
-    .reduce((acc, expense) => acc + expense.cost, 0);
-
-  const totalGas = expenses
-    .filter(expense => expense.category === "gas")
-    .reduce((acc, expense) => acc + expense.cost, 0);
-
   
+  function calculateTotal(type){
+      return expenses
+      .filter(expense => expense.category === type)
+      .reduce((acc, expense) => acc + expense.cost, 0);
+  }
+
+  function calculatePercentage(total){
+    return (Math.floor((total/budget) * 100));
+  }
+
+  const totalGrocery = calculateTotal("grocery")
+  const totalRent = calculateTotal("rent")
+  const totalEntertainment = calculateTotal("entertainment")
+  const totalBills = calculateTotal("bills")
+  const totalTaxes = calculateTotal("taxes")
+  const totalMisc = calculateTotal("misc")
+  const totalInvesting = calculateTotal("investing")
+
+  const groceryPercent = calculatePercentage(totalGrocery)
+  const rentPercent = calculatePercentage(totalRent)
+  const entertainmentPercent = calculatePercentage(totalEntertainment)
+  const billsPercent = calculatePercentage(totalBills)
+  const taxesPercent = calculatePercentage(totalTaxes)
+  const miscPercent = calculatePercentage(totalMisc)
+  const investingPercent = calculatePercentage(totalInvesting)
+
+  console.log(categories)
  
-  const groceryPercent = (Math.floor((totalGrocery/budget) * 100));
-  const rentPercent = (Math.floor((totalRent/budget) * 100));
-  const gasPercent = (Math.floor((totalGas/budget) * 100));
-
-
+ 
   useEffect(() => {
-    document.documentElement.style.setProperty('--prog-percent-grocery', `${groceryPercent}%`)
-  },[groceryPercent])
+    const variables = {
+      '--prog-percent-grocery': groceryPercent,
+      '--prog-percent-rent': rentPercent,
+      '--prog-percent-taxes': taxesPercent,
+      '--prog-percent-entertainment': entertainmentPercent,
+      '--prog-percent-bills': billsPercent,
+      '--prog-percent-misc': miscPercent,
+      '--prog-percent-investing': investingPercent
+    };
+  
+    for (let variable in variables) {
+      document.documentElement.style.setProperty(variable, `${variables[variable]}%`);
+    }
+  }, [groceryPercent, rentPercent, taxesPercent, entertainmentPercent, billsPercent, miscPercent, investingPercent]);
+  
 
-  useEffect(() => {
-    document.documentElement.style.setProperty('--prog-percent-rent', `${rentPercent}%`)
-  },[rentPercent])
 
-  useEffect(() => {
-    document.documentElement.style.setProperty('--prog-percent-gas', `${gasPercent}%`)
-  },[gasPercent])
+
 
 
   if (option === 1){
     return(
       <>
     <div class="progress-category-together progress mt-4">
-             <div class= {`progress-bar progress-category bar-total-grocery bg-success progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-             </div>
-             <div class= {`progress-bar progress-category bar-total-rent bg-warning progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-            </div>
-           <div class= {`progress-bar progress-category bar-total-gas bg-danger progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+        {categories.map((category) => (
+                <div key = {category.value} class= {`progress-bar progress-category bar-total-${category.value} bg-${categoryColor[category.value]} progress-category-together`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                </div>
+                  
+                ))}
+            
+            
+             
         </div> 
       
       <div>
         <ul className = "mt-2" style={{ display: 'flex', flexDirection: 'row', listStyleType: 'none', margin: 0, padding: 0, justifyContent: 'flex-start' }}>
 
         {categories.map((category) => (
-            <li key = {category.label} className={`category-name text-${categoryColor[category.value]}`} style={{ marginRight: '10px', paddingLeft: '20px' }}>• {category.label}</li>
+            <li key = {category.label} className={`d-flex category-name text-${categoryColor[category.value]}`} style={{ marginRight: '10px', paddingLeft: '20px' }}>• {category.label}</li>
               
             ))}
         </ul>
@@ -91,20 +117,19 @@ export default function Categories() {
     
 
       <div className = "category-container">
-      <h5 className = "mt-3">Groceries</h5>
-        <div class="progress progress-category mt-2">
-            <div class= {`progress-bar bar-total-grocery bg-danger`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+      {categories.map((category) => (
+        <>
+          <h5 className="mt-3">{category.label}</h5>
+          <div className="progress progress-category mt-2">
+              <div className={`progress-bar bar-total-${category.value} bg-success`} role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+    </>
+       ))}
 
-        <h5 className = "mt-3">Rent</h5>
-        <div class="progress progress-category mt-2">
-            <div class= {`progress-bar bar-total-rent bg-danger`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+        
 
-        <h5 className = "mt-3">Gas</h5>
-        <div class="progress progress-category mt-2">
-            <div class= {`progress-bar bar-total-gas bg-danger`} role="progressbar"  aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
+
+      
       </div>
 
     <div className="option-btn">

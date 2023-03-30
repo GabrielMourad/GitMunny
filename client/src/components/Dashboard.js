@@ -8,11 +8,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer } from 'react-toastify';
 import Categories from './Categories';
 
-function Dashboard() {
+function Dashboard({isAuth}) {
+ 
   return (
     <div className = "container">
     <ToastContainer/>
-        <h1 className = "mt-3 mb-4">GITMUNNY 😈😈😈</h1>
 
         <div className = "row mt-3">
             <div className = "col-sm ">

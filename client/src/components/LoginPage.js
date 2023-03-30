@@ -1,40 +1,31 @@
-import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import React, {useState } from 'react';
+import {auth, provider} from '../firebase/Firebase';
+import {signInWithPopup} from 'firebase/auth'
+import { useNavigate } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
-const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Add code to handle form submission here
-  }
+function Login({ setIsAuth }) {
+  let navigate = useNavigate();
+
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider).then((result) => {
+      localStorage.setItem("isAuth", true);
+      setIsAuth(true);
+      navigate("/");
+      toast.success("Successfully Logged In")
+    });
+  };
 
   return (
-    <div class="container-login">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <div class="login-form">
-                <h2>Login</h2>
-                <form>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter email"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password"/>
-                    </div>
-                    <button type="submit" class="btn btn-primary-login">Login</button>
-                </form>
-                <div class="signup-section">
-                    <p>Don't have an account yet? <a href="/signup">Sign Up</a></p>
-                </div>
-            </div>
-        </div>
+    <div className="loginPage">
+      <p>Sign In With Google to Continue</p>
+      <button className="login-with-google-btn" onClick={signInWithGoogle}>
+        Sign in with Google
+      </button>
     </div>
-</div>
   );
 }
 
-export default LoginPage;
+export default Login;
