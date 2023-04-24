@@ -80,8 +80,8 @@ export default function AddExpenseForm() {
         </div>
 
         <select
-          value={categoryName}
-          onChange={(e) => setCategoryName(e.target.value)}
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
           class="form-select form-select-sm"
           aria-label=".form-select-sm example"
           required
