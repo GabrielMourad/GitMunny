@@ -1,48 +1,29 @@
 import React, {useContext, useState} from 'react'
 import '../styles.css'
-import { BudgetAppContext } from '../context/BudgetAppContext'
 import ViewBudget from './ViewBudget';
-import EditBudget from './EditBudget';
 import TransactionModal from './modals/TransactionModal';
+import 'react-toastify/dist/ReactToastify.css';
 
-export default function BudgetCard(props) {
 
-  const {dispatch} = useContext(BudgetAppContext);
-  const [editBudget, setEditBudget] = useState(false);
-  const transactionModal = document.getElementById("transaction-modal")
+export default function BudgetCard() {
   
-
-  const handleEdit = () =>{
-    
-    setEditBudget(!editBudget);
-  }
-
-  const handleSave = (newBudget) => {
-    dispatch({
-      type: 'SET_BUDGET',
-      payload: newBudget
-    })
-
-    setEditBudget(false);
-    
-  }
-
 
   return (
     <>
+   
       
       <div className = 'alert alert-secondary p-3 d-flex  justify-content-between type-card'>
-        {!editBudget ? 
-        
-        <ViewBudget handleEdit = {handleEdit} /> 
-
-        : 
-
-        <EditBudget handleSave = {handleSave}/> }
+    
+        <ViewBudget /> 
 
       </div>
-      
-      <TransactionModal/>
+
+      <div>
+        <a data-bs-toggle="modal" data-bs-target="#transaction-modal" className = "modalTitle-transaction d-flex justify-content-center" href = "#" 
+        >Add Transaction</a>
+      </div>
+
+       <TransactionModal/>
     </>
     
   )

@@ -1,57 +1,39 @@
-import React from 'react'
-import AddExpenseForm from './components/AddExpenseForm';
-import BudgetCard from './components/BudgetCard';
-import ExpenseList from './components/ExpenseList';
-import ExpenseTotal from './components/ExpenseTotal';
-import BudgetModal from './components/modals/BudgetModal';
-import ProgressBar from './components/ProgressBar';
-import Remainding from './components/Remainding';
+import React, {useState} from 'react'
+import Dashboard from './components/Dashboard';
 import { BudgetContextProvider } from './context/BudgetAppContext';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
+import {auth} from "../src/firebase/Firebase"
+import LoginPage from './components/LoginPage';
+import Navbar from './components/Navbar';
 
-const App = (props) => {
+const App = () => {
+
+    const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"))
+
+    const signOut = () => {
+        auth.signOut().then(() => {
+            localStorage.clear()
+            setIsAuth(false)
+            window.location.pathname = "/login"
+        })
+        
+    }
+    
+
+      
     return(
         <BudgetContextProvider>
+            <BrowserRouter>
+                <Navbar isAuth = {isAuth} signOut = {signOut}/>
 
-            <div className = "container">
-                <h1 className = "mt-3 mb-4">GITMUNNY 😈😈😈😈 </h1>
-             
-                <div className = "row mt-3">
-                    <div className = "col-sm ">
-                        <BudgetCard/>
-                    </div>
-
-                    <div className = "col-sm ">
-                        <Remainding/>
-                    </div>
+                <Routes>
+                    <Route exact path="/login" element={!isAuth ? <LoginPage setIsAuth = {setIsAuth}/> : (<Navigate to = '/'/>)}/>
+                    <Route exact path="/" element={isAuth ? <Dashboard isAuth = {isAuth}/> : (<Navigate to = '/login'/>)}/>
                     
-                    <div className = "col-sm ">
-                        <ExpenseTotal/>
-                    </div>
-                  
-                </div>
-               
-                <div class = "mt-3">
-                     <ProgressBar/>
-                </div>
-
-                <h3 className = 'mt-3'>Add Expenses</h3>
-                <div className = 'row mt-3'>
-                    <div className = 'col-sm'>
-                        <AddExpenseForm/>
-                        
-                    </div>
-
-                </div>
-                <h3 className = 'mt-4'>Expenses</h3>
-                <div className = 'mt-3'>
-                    <div className = 'col-sm'>
-                        <ExpenseList/>
-                       
-                    </div>
-
-                </div>
-
-            </div>      
+                </Routes>
+            </BrowserRouter>
 
         </BudgetContextProvider>
     );

@@ -4,11 +4,8 @@ import BudgetModal from './modals/BudgetModal';
 
 export default function ExpenseTotal() {
 
-  const {expenses} = useContext(BudgetAppContext);
+  const {totalExpenses} = useContext(BudgetAppContext);
   
-  const totalExpenses = expenses.reduce((totalSum, currentItem) => {
-    return (totalSum = totalSum + currentItem.cost)
-  }, 0)
 
   return (
     <>

@@ -1,26 +1,31 @@
 import React, { useState, useContext } from 'react'
 import { BudgetAppContext } from '../context/BudgetAppContext';
 import {v4 as uuidv4} from 'uuid';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {  toast } from 'react-toastify';
+
+
 
 export default function AddExpenseForm() {
-  const {dispatch} = useContext(BudgetAppContext);
+  const {dispatch, categories} = useContext(BudgetAppContext);
 
   const [name, setName] = useState('');
   const [cost, setCost] = useState('');
-  
+  const [category, setCategory] = useState('');
 
+  
 
   function onSubmit(e){
     e.preventDefault();
-    alert('name ' + name+ ' cost ' +cost)
+    
 
     const expense = {
       id: uuidv4(),
       name: name,
-      cost: parseInt(cost),
-      date: new Date().toLocaleString()
+      cost: parseFloat(cost),
+      date: new Date().toLocaleString(),
+      type: 'p',
+      category: category
     }
    
     dispatch({
@@ -28,11 +33,18 @@ export default function AddExpenseForm() {
       payload: expense
     })
     
-    toast.success("Yup")
+    toast.success("Expense Set Successfully")
+    document.getElementById("close-modal").click();
     
+    setName("")
+    setCategory("")
+    setCost("")
   }
+  
 
   return (
+    <>
+    
     <form id = "expense-form" onSubmit={onSubmit}>
         <div className = 'col-sm'>
             <label htmlFor = 'name'>Name</label>
@@ -42,9 +54,21 @@ export default function AddExpenseForm() {
 
         <div className = 'col-sm mt-3 mb-3'>
             <label for = 'cost'>Cost</label>
-            <input required = 'required' type = 'text' className = 'form-control' id ='cost' value = {cost} onChange = {e => setCost(e.target.value)}></input>
+            <input required = 'required' type = 'number' className = 'form-control' id ='cost' value = {cost} onChange = {e => setCost(e.target.value)}></input>
         </div>
-       
+
+        <select value={category} onChange={(e) => setCategory(e.target.value)} className="form-select form-select-sm" aria-label=".form-select-sm example" required onInvalid={(e) => { e.target.setCustomValidity('Please select a category') }} onInput={(e) => { e.target.setCustomValidity('') }}>
+          <option disabled value="">Select Category</option>
+          {categories.map((category) => (
+            <option key={category.value} value={category.value}>
+              {category.label}
+            </option>
+          ))}
+        </select>
+
+     
     </form>
+      
+    </>
   )
 }
