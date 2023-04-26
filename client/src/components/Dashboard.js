@@ -16,6 +16,7 @@ function Dashboard({ isAuth }) {
     useContext(BudgetAppContext);
 
   // Sergio was here
+  // Gabriel was actually also there too
 
   return (
     <div className="container">
