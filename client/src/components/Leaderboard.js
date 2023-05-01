@@ -11,9 +11,16 @@ export default function Leaderboard() {
     { rank: 7, user: "Grace", score: 40 },
     { rank: 8, user: "Harry", score: 30 },
     { rank: 9, user: "Ivy", score: 20 },
-    { rank: 10, user: "John", score: 10 }
+    { rank: 10, user: "John", score: 300 },
+    { rank: 5, user: "Eve", score: 30 },
+    { rank: 6, user: "Frank", score: 20 },
+    { rank: 7, user: "Grace", score: 40 },
   ];
   
+  leaderboard.sort((a, b) => 
+     b.score - a.score
+  )
+
   return (
     <>
     <div className="container">
@@ -28,16 +35,13 @@ export default function Leaderboard() {
             <th>Score</th>
           </tr>
 
-          {leaderboard.map((obj) => (
-              <>
+          {leaderboard.map((obj, index) => (
                 <tr>
-                  <td>{obj.rank}</td>
+                  <td>{index + 1}</td>
                   <td>{obj.user}</td>
                   <td>{obj.score}</td>
-
                 </tr>
-
-              </>
+            
             ))}
 
           {/* <tr>
