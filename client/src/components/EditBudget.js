@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { BudgetAppContext } from "../context/BudgetAppContext";
 import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
-import { updateDoc, setDoc, doc, getDoc, arrayUnion } from "firebase/firestore";
+import { toast } from "react-toastify";
+import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase/Firebase";
 
 export default function EditBudget() {

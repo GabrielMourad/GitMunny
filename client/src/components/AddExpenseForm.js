@@ -3,6 +3,8 @@ import { BudgetAppContext } from "../context/BudgetAppContext";
 import { v4 as uuidv4 } from "uuid";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../firebase/Firebase";
 
 export default function AddExpenseForm() {
   const { dispatch, categories, userInfo } = useContext(BudgetAppContext);
@@ -20,7 +22,7 @@ export default function AddExpenseForm() {
   const [transactionName, setTransactionName] = useState("");
   //
 
-  function onSubmit(e) {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     const newDate = new Date().toLocaleString();
@@ -39,18 +41,56 @@ export default function AddExpenseForm() {
       pendingSort: pendingSort,
     };
 
+    const transactionsRef = collection(
+      db,
+      "users",
+      userInfo.uid,
+      "transactions"
+    );
+    addDoc(transactionsRef, expense);
     dispatch({
       type: "ADD_EXPENSE",
       payload: expense,
     });
-
     toast.success("Expense Set Successfully");
     document.getElementById("close-modal").click();
 
     setTransactionName("");
     setCategoryName("");
     setCost("");
-  }
+  };
+
+  // function onSubmit(e) {
+  //   e.preventDefault();
+
+  //   const newDate = new Date().toLocaleString();
+
+  //   const expense = {
+  //     id: uuidv4(),
+  //     categoryBackgroundColor: categoryBackgroundColor,
+  //     categoryIcon: categoryIcon,
+  //     transactionName: transactionName,
+  //     categoryTextColor: categoryTextColor,
+  //     categoryName: categoryName,
+  //     cost: parseFloat(cost),
+  //     date: newDate,
+  //     type: "p",
+  //     isWithdrawl: isWithdrawl,
+  //     pendingSort: pendingSort,
+  //   };
+
+  //   dispatch({
+  //     type: "ADD_EXPENSE",
+  //     payload: expense,
+  //   });
+
+  //   toast.success("Expense Set Successfully");
+  //   document.getElementById("close-modal").click();
+
+  //   setTransactionName("");
+  //   setCategoryName("");
+  //   setCost("");
+  // }
 
   return (
     <>
