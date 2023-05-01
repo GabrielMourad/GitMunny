@@ -16,6 +16,26 @@ function Dashboard({ isAuth }) {
     useContext(BudgetAppContext);
 
   // Sergio was here
+  // Sergio was here
+  useEffect(() => {
+    // WORKING ON STARTING APPLICATION WITH CORRECT BUDGET VALUE //
+    const currentDocumentRef = doc(db, "users", userInfo.uid);
+    getDoc(currentDocumentRef)
+      .then((docSnap) => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          dispatch({
+            type: "SET_BUDGET",
+            payload: data.budget,
+          });
+        } else {
+          console.log("Document doesn't exist");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  }, []);
 
   return (
     <div className="container">
