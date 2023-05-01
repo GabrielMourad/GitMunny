@@ -16,7 +16,7 @@ export default function ExpenseList() {
           expenses.filter((expense) => expense.category === expenseCategory )
         )
       }
-      
+
 
     }, [expenses, expenseCategory]);
 

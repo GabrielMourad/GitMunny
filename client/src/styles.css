@@ -1,7 +1,7 @@
 body {
     margin: 0 auto;
-    background-color : #2d2e30;
-    color: white;
+    background-color : #FAFAFA;
+    color: black;
  
 }
 
@@ -213,7 +213,11 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #24252A;
+    background-color: #4a8cd8;
+    text-align: center;
+    width: 85%;
+    margin: 0 auto;
+    
 } 
 
 li>a, .navbtn{
@@ -233,6 +237,7 @@ header {
 .nav_title{
     cursor: pointer;
     margin-right: auto;
+    color: edf0f1;
 }
 .nav_links{
     list-style: none;
@@ -254,7 +259,7 @@ header {
 .navbtn{
     margin-left: 20px;
     padding: 4px 20px;
-    background-color: rgba(0,136,169,1);
+    background-color: rgb(1, 84, 105);
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -264,4 +269,42 @@ header {
 .navbtn:hover{
     background-color: rgba(0,136,169,0.8);
 
+}
+
+.lboard_title{
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    font-size: 20px;
+    background-color: #3498db;
+    color: white;
+}
+
+.lboard{
+    border-collapse: collapse;
+    border: 2px solid rgb(200,200,200);
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    width: 100%;  
+}
+.lboard th, td{
+    border: 1px solid rgb(250, 250, 250);
+    padding: 10px 20px;
+    
+
+}
+
+.lboard th {
+    background-color: rgb(235,235,235);
+    font-size: 14px;
+    font-weight: 600;
+    color: #34495e;
+  } 
+
+tr:nth-child(even) td {
+    background-color: rgba(250, 250, 250);
+}
+
+tr:nth-child(odd) td {
+    background-color: rgb(245,245,245);
 }

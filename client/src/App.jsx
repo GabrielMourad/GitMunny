@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
 import {auth} from "../src/firebase/Firebase"
 import LoginPage from './components/LoginPage';
 import Navbar from './components/Navbar';
+import Leaderboard from './components/Leaderboard';
 
 const App = () => {
 
@@ -31,6 +32,7 @@ const App = () => {
                 <Routes>
                     <Route exact path="/login" element={!isAuth ? <LoginPage setIsAuth = {setIsAuth}/> : (<Navigate to = '/'/>)}/>
                     <Route exact path="/" element={isAuth ? <Dashboard isAuth = {isAuth}/> : (<Navigate to = '/login'/>)}/>
+                    <Route exact path="/leaderboard" element={isAuth ? <Leaderboard isAuth = {isAuth}/> : (<Navigate to = '/login'/>)}/>
                     
                 </Routes>
             </BrowserRouter>
