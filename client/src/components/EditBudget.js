@@ -4,12 +4,13 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase/Firebase";
+import { collection, getDocs, query } from "firebase/firestore";
 
 export default function EditBudget() {
   const { userInfo, budget, dispatch } = useContext(BudgetAppContext);
   const [newBudget, setNewBudget] = useState(budget);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     // Firebase update budget
     console.log(userInfo.uid, newBudget);
@@ -22,6 +23,31 @@ export default function EditBudget() {
     dispatch({
       type: "SET_BUDGET",
       payload: newBudget,
+    });
+
+    const transactionsRef = collection(
+      db,
+      "users",
+      userInfo.uid,
+      "transactions"
+    );
+    const q = query(transactionsRef);
+    const querySnapshot = await getDocs(q);
+    const transactionsData = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    let totalExpenses = transactionsData
+      .filter((expense) => expense.type === "p")
+      .reduce((acc, expense) => acc + expense.cost, 0);
+    totalExpenses = Math.round(100 * totalExpenses) / 100;
+    const remainding = Math.round(100 * (budget - totalExpenses)) / 100;
+    dispatch({
+      type: "UPDATE_REMAINDING",
+      payload: {
+        totalExpenses: totalExpenses,
+        remainding: remainding,
+      },
     });
 
     document.getElementById("close-modal-budget").click();

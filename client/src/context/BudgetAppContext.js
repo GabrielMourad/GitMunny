@@ -49,6 +49,19 @@ function reducer(state, action) {
           Math.round(100 * (state.remainding + action.payload.cost)) / 100,
       };
 
+    case "UPDATE_EXPENSES":
+      return {
+        ...state,
+        expenses: action.payload.expenses,
+      };
+
+    case "UPDATE_REMAINDING":
+      return {
+        ...state,
+        totalExpenses: action.payload.totalExpenses,
+        remainding: action.payload.remainding,
+      };
+
     default:
       return state;
   }
