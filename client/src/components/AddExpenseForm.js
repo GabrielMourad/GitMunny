@@ -3,7 +3,7 @@ import { BudgetAppContext } from "../context/BudgetAppContext";
 import { v4 as uuidv4 } from "uuid";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
-import { addDoc, collection } from "firebase/firestore";
+import { setDoc, doc, collection } from "firebase/firestore";
 import { db } from "../firebase/Firebase";
 
 export default function AddExpenseForm() {
@@ -22,7 +22,7 @@ export default function AddExpenseForm() {
   const [transactionName, setTransactionName] = useState("");
   //
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     const newDate = new Date().toLocaleString();
@@ -39,6 +39,7 @@ export default function AddExpenseForm() {
       type: "p",
       isWithdrawl: isWithdrawl,
       pendingSort: pendingSort,
+      firebase_doc_id: "",
     };
 
     const transactionsRef = collection(
@@ -47,7 +48,9 @@ export default function AddExpenseForm() {
       userInfo.uid,
       "transactions"
     );
-    addDoc(transactionsRef, expense);
+    const newDocRef = doc(transactionsRef);
+    expense.firebase_doc_id = newDocRef.id;
+    await setDoc(newDocRef, expense);
     dispatch({
       type: "ADD_EXPENSE",
       payload: expense,

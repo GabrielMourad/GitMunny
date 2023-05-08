@@ -3,7 +3,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { BudgetAppContext } from "../../context/BudgetAppContext";
 import { v4 as uuidv4 } from "uuid";
-import { addDoc, collection } from "firebase/firestore";
+import { doc, setDoc, collection } from "firebase/firestore";
 import { db } from "../../firebase/Firebase";
 //
 export default function DepositModal() {
@@ -25,7 +25,7 @@ export default function DepositModal() {
   const [categoryBackgroundColor, setCategoryBackgroundColor] =
     useState("blue");
 
-  const handleDeposit = (e) => {
+  const handleDeposit = async (e) => {
     e.preventDefault();
     setDeposit(deposit);
     const expense = {
@@ -40,6 +40,7 @@ export default function DepositModal() {
       categoryIcon: categoryIcon,
       categoryTextColor: categoryTextColor,
       categoryName: "DEPOSIT",
+      firebase_doc_id: "",
     };
 
     const transactionsRef = collection(
@@ -48,7 +49,10 @@ export default function DepositModal() {
       userInfo.uid,
       "transactions"
     );
-    addDoc(transactionsRef, expense);
+
+    const newDocRef = doc(transactionsRef);
+    expense.firebase_doc_id = newDocRef.id;
+    await setDoc(newDocRef, expense);
 
     dispatch({
       type: "SET_DEPOSIT",

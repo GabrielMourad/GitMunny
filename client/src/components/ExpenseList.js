@@ -18,7 +18,7 @@ export default function ExpenseList() {
     //     expenses.filter((expense) => expense.category === expenseCategory)
     //   );
     // }
-
+    console.log("ExpenseList UseEffect running...");
     const getTransactions = async () => {
       const transactionsRef = collection(
         db,
@@ -32,10 +32,22 @@ export default function ExpenseList() {
         id: doc.id,
         ...doc.data(),
       }));
+      dispatch({
+        type: "UPDATE_EXPENSES",
+        payload: { expenses: transactionsData },
+      });
+      console.log("PARSED data...", transactionsData);
       setViewExpenses(transactionsData);
-      let totalExpenses = transactionsData
-        .filter((expense) => expense.type === "p")
-        .reduce((acc, expense) => acc + expense.cost, 0);
+      let totalExpenses = transactionsData.reduce(
+        (acc, expense) =>
+          expense.type === "p"
+            ? acc + expense.cost
+            : expense.type === "d"
+            ? acc - expense.cost
+            : acc,
+        0
+      );
+      console.log("The true is", totalExpenses);
       totalExpenses = Math.round(100 * totalExpenses) / 100;
       const remainding = Math.round(100 * (budget - totalExpenses)) / 100;
       dispatch({
@@ -47,7 +59,29 @@ export default function ExpenseList() {
       });
     };
     getTransactions();
-  }, [budget, expenses, expenseCategory]);
+  }, []);
+
+  useEffect(() => {
+    let totalExpenses = expenses.reduce(
+      (acc, expense) =>
+        expense.type === "p"
+          ? acc + expense.cost
+          : expense.type === "d"
+          ? acc - expense.cost
+          : acc,
+      0
+    );
+    totalExpenses = Math.round(100 * totalExpenses) / 100;
+    const remainding = Math.round(100 * (budget - totalExpenses)) / 100;
+    setViewExpenses(expenses);
+    dispatch({
+      type: "UPDATE_REMAINDING",
+      payload: {
+        totalExpenses: totalExpenses,
+        remainding: remainding,
+      },
+    });
+  }, [expenses]);
 
   const handleCategoryView = (e) => {
     e.preventDefault();
@@ -84,6 +118,7 @@ export default function ExpenseList() {
               <ExpenseItem
                 key={expense.id}
                 id={expense.id}
+                firebase_doc_id={expense.firebase_doc_id}
                 name={expense.transactionName}
                 cost={expense.cost}
                 date={expense.date}

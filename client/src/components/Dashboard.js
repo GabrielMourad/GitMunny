@@ -18,6 +18,7 @@ function Dashboard({ isAuth }) {
   // Sergio was here
   // Sergio was here
   useEffect(() => {
+    console.log("Dashboard UseEffect running...");
     // WORKING ON STARTING APPLICATION WITH CORRECT BUDGET VALUE //
     const currentDocumentRef = doc(db, "users", userInfo.uid);
     getDoc(currentDocumentRef)

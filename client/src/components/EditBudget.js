@@ -37,11 +37,17 @@ export default function EditBudget() {
       id: doc.id,
       ...doc.data(),
     }));
-    let totalExpenses = transactionsData
-      .filter((expense) => expense.type === "p")
-      .reduce((acc, expense) => acc + expense.cost, 0);
+    let totalExpenses = transactionsData.reduce(
+      (acc, expense) =>
+        expense.type === "p"
+          ? acc + expense.cost
+          : expense.type === "d"
+          ? acc - expense.cost
+          : acc,
+      0
+    );
     totalExpenses = Math.round(100 * totalExpenses) / 100;
-    const remainding = Math.round(100 * (budget - totalExpenses)) / 100;
+    const remainding = Math.round(100 * (newBudget - totalExpenses)) / 100;
     dispatch({
       type: "UPDATE_REMAINDING",
       payload: {

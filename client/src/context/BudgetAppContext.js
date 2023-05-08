@@ -109,9 +109,15 @@ const initialState = {
   ],
 };
 
-initialState.totalExpenses = initialState.expenses
-  .filter((expense) => expense.type === "p")
-  .reduce((acc, expense) => acc + expense.cost, 0);
+initialState.totalExpenses = initialState.expenses.reduce((acc, expense) => {
+  if (expense.type === "p") {
+    return acc + expense.cost;
+  } else if (expense.type === "d") {
+    return acc - expense.cost;
+  } else {
+    return acc;
+  }
+}, 0);
 
 initialState.totalExpenses = Math.round(100 * initialState.totalExpenses) / 100;
 

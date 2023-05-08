@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { BudgetAppContext } from "../context/BudgetAppContext";
 import { auth, provider } from "../firebase/Firebase";
 import { signInWithPopup } from "firebase/auth";
@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { db } from "../firebase/Firebase";
-import { updateDoc, setDoc, doc, getDoc, arrayUnion } from "firebase/firestore";
+import { setDoc, doc, getDoc } from "firebase/firestore";
 
 function Login({ setIsAuth }) {
   const { setUserInfo } = useContext(BudgetAppContext);
